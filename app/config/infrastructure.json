@@ -1,0 +1,171 @@
+{
+  "filters": {
+    "hardwareTypes": [
+      { "id": "game", "name": "Game Hosting" },
+      { "id": "vps", "name": "VPS Hosting" },
+      { "id": "bot", "name": "Bot Hosting" }
+    ],
+    "other": [
+      { "id": "owned", "name": "Owned Hardware" },
+      { "id": "nvme", "name": "NVMe Storage" },
+      { "id": "multiBlend10g", "name": "10 Gbit Multi-blend" }
+    ]
+  },
+  "locations": [
+    {
+      "id": "miami",
+      "name": "Miami, Florida",
+      "nodes": [
+        {
+          "tier": "Budget Miami01",
+          "nodeType": "game",
+          "ownedHardware": false,
+          "comingSoon": false,
+          "cpu": "Dual Intel Xeon Gold 6152",
+          "ram": "DDR4 @ 2133 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit Multi-blend"
+        },
+        {
+          "tier": "Budget Miami02",
+          "nodeType": "game",
+          "ownedHardware": false,
+          "comingSoon": false,
+          "cpu": "Dual Intel Xeon Gold 6152",
+          "ram": "DDR4 @ 2133 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit Multi-blend"
+        },
+        {
+          "tier": "Premium Miami03",
+          "nodeType": "game",
+          "ownedHardware": false,
+          "comingSoon": false,
+          "cpu": "AMD EPYC 7B13",
+          "ram": "DDR4 @ 3200 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit"
+        },
+        {
+          "tier": "Standard Miami01",
+          "nodeType": "vps",
+          "ownedHardware": true,
+          "comingSoon": false,
+          "cpu": "Dual Intel Xeon Gold 6152",
+          "ram": "DDR4 @ 2133 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit Multi-blend"
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "name": "Delhi, India",
+      "nodes": [
+        {
+          "tier": "Budget India01",
+          "nodeType": "game",
+          "ownedHardware": true,
+          "comingSoon": false,
+          "cpu": "Dual Intel Xeon E5-2680v4",
+          "ram": "DDR4 @ 2400 MHz",
+          "storage": "SATA SSD",
+          "bandwidth": "1 Gbit"
+        },
+        {
+          "tier": "Premium India02",
+          "nodeType": "game",
+          "ownedHardware": true,
+          "comingSoon": false,
+          "cpu": "AMD Ryzen 9 9950x",
+          "ram": "DDR5 @ 4800 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit"
+        },
+        {
+          "tier": "Standard India01",
+          "nodeType": "vps",
+          "ownedHardware": true,
+          "comingSoon": false,
+          "cpu": "Dual Intel Xeon E5-2680v4",
+          "ram": "DDR4 @ 2400 MHz",
+          "storage": "SATA SSD",
+          "bandwidth": "10 Gbit"
+        },
+        {
+          "tier": "Premium India02",
+          "nodeType": "vps",
+          "ownedHardware": true,
+          "waterCooled": false,
+          "comingSoon": false,
+          "cpu": "AMD Ryzen 9 9950x",
+          "ram": "DDR5 @ 4800 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit"
+        }
+      ]
+    },
+    {
+      "id": "germany",
+      "name": "Falkeinstein, Germany",
+      "nodes": [
+        {
+          "tier": "Budget Germany01",
+          "nodeType": "game",
+          "ownedHardware": false,
+          "comingSoon": false,
+          "cpu": "AMD EPYC 7502P",
+          "ram": "DDR4 @ 2933 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit"
+        },
+        {
+          "tier": "Budget Germany02",
+          "nodeType": "game",
+          "ownedHardware": false,
+          "comingSoon": false,
+          "cpu": "AMD EPYC 7502P",
+          "ram": "DDR4 @ 2933 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit"
+        },
+        {
+          "tier": "Premium Germany03",
+          "nodeType": "game",
+          "ownedHardware": false,
+          "comingSoon": false,
+          "cpu": "AMD EPYC 9564",
+          "ram": "DDR5 @ 4800 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit"
+        },
+        {
+          "tier": "Standard Germany01",
+          "nodeType": "vps",
+          "ownedHardware": false,
+          "comingSoon": false,
+          "cpu": "AMD EPYC 7502P",
+          "ram": "DDR4 @ 2933 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit"
+        }
+      ]
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore, Singapore",
+      "nodes": [
+        {
+          "tier": "Budget Singapore01",
+          "nodeType": "game",
+          "ownedHardware": false,
+          "comingSoon": false,
+          "cpu": "AMD EPYC 7B13",
+          "ram": "DDR4 @ 3200 MHz",
+          "storage": "NVMe SSD",
+          "bandwidth": "1 Gbit"
+        }
+      ]
+    }
+  ]
+}

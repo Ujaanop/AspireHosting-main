@@ -1,0 +1,63 @@
+{
+  "planTypes": [
+    {
+      "id": "dc-budget",
+      "name": "Budget",
+      "displayName": "Budget Plans",
+      "image": "/icons/nodejs.png"
+    }
+  ],
+  "plans": {
+    "dc-budget": [
+      {
+        "id": "budget-starter",
+        "name": "Discord Bot 256MB",
+        "badge": "Popular",
+        "cpuDetail": "Shared CPU",
+        "cpu": "50%",
+        "ram": "256 MB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "10 GB",
+        "storageDetail": "SSD Storage",
+        "uptime": "24/7 Uptime",
+        "price": "$2.75",
+        "period": "/qtr",
+        "orderLink": "https://billing.aspirehosting.net/store/discord-bots/discord-bot-256mbb",
+        "comingSoon": false,
+        "originalPrice": "$2.75"
+      },
+      {
+        "id": "budget-basic",
+        "name": "Discord Bot 512MB",
+        "cpuDetail": "Shared CPU",
+        "cpu": "100%",
+        "ram": "512 MB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "10 GB",
+        "storageDetail": "SSD Storage",
+        "uptime": "24/7 Uptime",
+        "price": "$1.50",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/discord-bots/discord-bot-512mbb",
+        "comingSoon": false,
+        "originalPrice": "$1.50"
+      },
+      {
+        "id": "budget-1gb",
+        "name": "Discord Bot 1GB",
+        "cpuDetail": "Shared CPU",
+        "cpu": "150%",
+        "ram": "1 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "10 GB",
+        "storageDetail": "SSD Storage",
+        "uptime": "24/7 Uptime",
+        "price": "$2.25",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/discord-bots/discord-bot-1024mbb",
+        "comingSoon": false,
+        "originalPrice": "$2.25"
+      }
+    ]
+  }
+}

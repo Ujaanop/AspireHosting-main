@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm \"D:/AspireHosting-main/app/lavalink/page.tsx\")",
+      "Bash(rm \"D:/AspireHosting-main/app/components/lavalink/LavalinkPricingSection.tsx\")",
+      "Bash(rm \"D:/AspireHosting-main/app/config/sections/lavalink.json\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(where npm:*)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)"
+    ]
+  }
+}

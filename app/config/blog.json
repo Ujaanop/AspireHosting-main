@@ -1,0 +1,147 @@
+{
+  "categories": [
+    {
+      "id": "hosting-news",
+      "name": "Hosting News",
+      "description": "Latest updates and news about our hosting services",
+      "color": "blue",
+      "icon": "server"
+    },
+    {
+      "id": "tutorials",
+      "name": "Tutorials",
+      "description": "Step-by-step guides and how-to articles",
+      "color": "green",
+      "icon": "book-open"
+    },
+    {
+      "id": "announcements",
+      "name": "Announcements",
+      "description": "Important updates and company announcements",
+      "color": "purple",
+      "icon": "megaphone"
+    },
+    {
+      "id": "technology",
+      "name": "Technology",
+      "description": "Tech insights and industry trends",
+      "color": "orange",
+      "icon": "cpu"
+    }
+  ],
+  "posts": [
+    {
+      "id": "welcome-to-the-aspire-blog",
+      "title": "Welcome to the Aspire Blog",
+      "slug": "welcome-to-the-aspire-blog",
+      "excerpt": "We're launching the official Aspire Hosting blog — your new home for hosting guides, product updates, infrastructure deep-dives, and the occasional announcement.",
+      "content": "We've been meaning to do this for a while.\n\nHosting is a technical space, and we believe our customers deserve more than just a control panel and a support ticket queue. You deserve context — an explanation of what's running under the hood, honest write-ups about the decisions we make, and practical guides that help you get more out of every server you spin up.\n\nThat's what this blog is for.\n\n## What to Expect\n\nWe'll be writing about four main topics:\n\n- **Hosting News** — announcements about new locations, hardware upgrades, and service changes\n- **Tutorials** — step-by-step guides on deploying servers, configuring bots, optimising game servers, and more\n- **Technology** — deep dives into the infrastructure we run and the choices behind it\n- **Announcements** — scheduled maintenance windows, policy updates, and anything else you should know\n\nPosts will go up regularly. We're not chasing an algorithm here — just trying to write things worth reading.\n\n## A Note on Quality\n\nEvery article on this blog is written by someone who works at Aspire. No filler, no SEO padding, no AI-generated fluff dressed up as expertise. If a post carries a team member's name, they wrote it.\n\n## Where to Start\n\nIf you're new to Aspire, a good place to begin is our guide on choosing the right hosting plan for your project — it covers the practical tradeoffs between shared, VPS, and dedicated infrastructure without trying to upsell you at every paragraph.\n\nIf you've been a customer for a while, keep an eye on the Technology and Hosting News categories. We'll be sharing more about our infrastructure roadmap there over the coming months.\n\nWelcome aboard.\n\n— The Aspire Team",
+      "author": {
+        "name": "Aspire Team",
+        "role": "Aspire Hosting",
+        "avatar": "/authors/aspire-team.jpg"
+      },
+      "category": "announcements",
+      "tags": ["aspire", "blog", "welcome", "announcement"],
+      "featured": true,
+      "published": true,
+      "publishedAt": "2025-03-01T09:00:00Z",
+      "updatedAt": "2025-03-01T09:00:00Z",
+      "readTime": "3 min read",
+      "image": "/blog/server.webp",
+      "seo": {
+        "title": "Welcome to the Aspire Blog — Aspire Hosting",
+        "description": "Introducing the official Aspire Hosting blog — guides, infrastructure deep-dives, product updates, and more.",
+        "keywords": ["aspire hosting", "blog launch", "hosting news", "web hosting"]
+      }
+    },
+    {
+      "id": "what-99-9-uptime-actually-means",
+      "title": "What 99.9% Uptime Actually Means (And Why It Matters)",
+      "slug": "what-99-9-uptime-actually-means",
+      "excerpt": "Every hosting provider promises 99.9% uptime. But what does that number actually translate to in downtime per year — and how do you hold a provider accountable to it?",
+      "content": "You've seen the number everywhere: **99.9% uptime**. It's on every hosting provider's homepage, usually in large text next to a shield icon. But what does it actually mean in practice?\n\n## The Maths\n\nUptime is expressed as a percentage of total time in a given period. Here's what the common tiers translate to in real downtime:\n\n| SLA | Downtime per Year | Downtime per Month |\n|-----|-------------------|--------------------|\n| 99% | ~87.6 hours | ~7.3 hours |\n| 99.9% | ~8.7 hours | ~43.8 minutes |\n| 99.95% | ~4.4 hours | ~21.9 minutes |\n| 99.99% | ~52.6 minutes | ~4.4 minutes |\n\nA 99.9% SLA allows for roughly **43 minutes of downtime per month**. For most workloads, that's acceptable. For payment processing or real-time multiplayer, it might not be.\n\n## What Counts as Downtime?\n\nThis is where SLAs get complicated. Most providers define downtime narrowly — often as complete unavailability of the server or service. Partial degradation (slow response times, packet loss, high latency) usually doesn't count.\n\nRead the SLA carefully. Look for:\n- How downtime is **measured** (external monitoring vs. internal)\n- What's **excluded** (scheduled maintenance, force majeure, user error)\n- How you **claim compensation** and what it covers\n\n## Scheduled Maintenance\n\nNearly every SLA carves out scheduled maintenance windows. During a maintenance window, a provider can take your server down without it counting against their uptime guarantee. Some providers give 24 hours notice; others give a week.\n\nAt Aspire, we post maintenance windows at least 72 hours in advance and schedule them during low-traffic hours (typically 1–4 AM UTC). We also post real-time updates on our status page.\n\n## How We Measure It\n\nWe use external monitoring — a third-party service pings your server from multiple locations every 60 seconds. If it fails to respond from a majority of locations, we record it as downtime. You can see our historical uptime data on our public status page.\n\n## Bottom Line\n\n99.9% is a reasonable baseline for most hosting use cases. If you need higher reliability, look at providers offering 99.99% SLAs, geo-redundant setups, or automatic failover — and expect to pay accordingly.\n\nThe most important question isn't the number itself. It's whether the provider has a track record of hitting it, and what they'll do when they don't.",
+      "author": {
+        "name": "Infrastructure Team",
+        "role": "Aspire Hosting",
+        "avatar": "/authors/infra-team.jpg"
+      },
+      "category": "technology",
+      "tags": ["uptime", "sla", "infrastructure", "reliability"],
+      "featured": false,
+      "published": true,
+      "publishedAt": "2025-03-05T10:00:00Z",
+      "updatedAt": "2025-03-05T10:00:00Z",
+      "readTime": "5 min read",
+      "image": "/blog/vps-locations-2024.jpg",
+      "seo": {
+        "title": "What 99.9% Uptime Actually Means — Aspire Hosting",
+        "description": "A plain-English breakdown of hosting uptime SLAs, what counts as downtime, and how to hold a provider accountable.",
+        "keywords": ["uptime sla", "hosting reliability", "99.9% uptime", "server downtime"]
+      }
+    },
+    {
+      "id": "choosing-the-right-hosting-plan",
+      "title": "How to Choose the Right Hosting Plan for Your Project",
+      "slug": "choosing-the-right-hosting-plan",
+      "excerpt": "Shared, VPS, or dedicated — the right answer depends on your traffic, budget, and tolerance for configuration. Here's how to think through it without the upsell.",
+      "content": "The most common question we get from new customers is some version of: *\"What plan should I get?\"*\n\nIt's a reasonable question, and the honest answer is: it depends. But \"it depends\" isn't useful unless we explain what it depends on. So here's the framework we use internally.\n\n## Start With Your Workload\n\nBefore looking at any pricing page, answer three questions:\n\n1. **How much traffic do you expect?** A personal project getting 100 visits a day has very different requirements to a community server with 500 concurrent users.\n2. **Is your workload CPU-bound or memory-bound?** Game servers eat RAM. Machine learning inference eats CPU. Most web apps are neither — they're network-bound.\n3. **How much can go wrong?** If your server going down for an hour costs you money or damages your reputation, you need redundancy. If it's a hobby project, you don't.\n\n## Shared Hosting\n\n**Best for**: Simple websites, portfolios, low-traffic blogs.\n\nShared hosting puts multiple customers on the same physical server. It's cheap because resources are pooled. The downside is that a noisy neighbour can affect your performance, and you have limited control over the server environment.\n\nIf you're running a WordPress blog or a static site, shared hosting is fine. If you're running anything with custom software dependencies, move on.\n\n## VPS Hosting\n\n**Best for**: Most things.\n\nA VPS (Virtual Private Server) gives you a dedicated slice of a physical machine. You get a fixed allocation of RAM and CPU, root access, and the ability to install whatever you want.\n\nThe tradeoff is complexity — you're responsible for keeping the operating system patched and the software configured. If you're not comfortable with a Linux terminal, factor in time to learn, or look for managed VPS options.\n\n## Dedicated Servers\n\n**Best for**: High-traffic applications, database servers, anything requiring consistent I/O performance.\n\nWith a dedicated server, you're renting the entire physical machine. No neighbours, no contention, predictable performance. It's significantly more expensive than VPS, and most projects don't need it.\n\nWhere dedicated makes sense: large game server networks, production databases, applications with sustained high CPU usage, or compliance requirements that prohibit multi-tenancy.\n\n## Game Servers\n\nGame servers are a special case. They're memory-intensive, latency-sensitive, and often need to burst for short periods (when players join). Our game hosting plans are pre-tuned for specific games — the underlying infrastructure is the same VPS hardware, but the software stack is optimised for each title.\n\nRule of thumb: allocate roughly 500MB RAM per 10 Minecraft players. Discord bots are much lighter — a well-written bot with basic commands will run comfortably on 256–512MB.\n\n## Our Recommendation\n\nIf you're unsure, start with a small VPS. It's flexible enough to handle most workloads, and you can scale vertically (more RAM/CPU) or horizontally (more servers) as you grow. Overprovisioning at the start is a common mistake — most projects never hit the limits of a modest VPS.",
+      "author": {
+        "name": "Support Team",
+        "role": "Aspire Hosting",
+        "avatar": "/authors/support-team.jpg"
+      },
+      "category": "tutorials",
+      "tags": ["vps", "shared-hosting", "dedicated", "guide", "beginner"],
+      "featured": false,
+      "published": true,
+      "publishedAt": "2025-03-10T11:00:00Z",
+      "updatedAt": "2025-03-10T11:00:00Z",
+      "readTime": "6 min read",
+      "image": "/blog/minecraft-server-setup.jpg",
+      "seo": {
+        "title": "How to Choose the Right Hosting Plan — Aspire Hosting",
+        "description": "A practical guide to choosing between shared, VPS, and dedicated hosting without the marketing spin.",
+        "keywords": ["hosting plans", "vps vs shared", "dedicated server", "hosting guide"]
+      }
+    },
+    {
+      "id": "latency-matters-online-gaming",
+      "title": "Why Low-Latency Hosting Matters for Online Gaming",
+      "slug": "latency-matters-online-gaming",
+      "excerpt": "Ping isn't just a number — it's the difference between a smooth multiplayer experience and one your players rage-quit. Here's what drives latency and how to minimise it.",
+      "content": "When a player says a server \"feels laggy\", they're usually describing one of two things: high latency (ping) or low tick rate. Both are server-side problems, and both are solvable — but they require different fixes.\n\n## What Is Latency?\n\nLatency is the time it takes for a packet to travel from a player's device to the server and back. It's measured in milliseconds (ms). The rough thresholds for gaming are:\n\n- **< 30ms**: Excellent. Players won't notice any delay.\n- **30–60ms**: Good. Acceptable for most game types.\n- **60–100ms**: Noticeable. Fast-paced games will feel slightly off.\n- **> 100ms**: Poor. Competitive players will feel it clearly.\n\n## What Causes Latency?\n\nThe biggest driver is **physical distance** between the player and the server. Light travels through fibre at roughly 200,000 km/s — a server in the US will always have higher latency for a player in India than a server in Singapore, regardless of how fast the hardware is.\n\nOther factors:\n\n- **Network routing**: How many hops a packet takes, and the quality of the links between them\n- **Server load**: A CPU-bound server introduces processing delay on top of network latency\n- **Tick rate**: How often the server processes game state. Higher tick rates (64 vs 128) give more accurate hit detection but increase CPU load\n\n## Choosing a Server Location\n\nThe most impactful thing you can do for latency is pick a server location close to your player base. If most of your players are in South Asia, a Mumbai or Singapore server will outperform Frankfurt by 80–120ms.\n\nOur current locations:\n- **India (Mumbai)** — lowest latency for South Asian players\n- **Singapore** — covers Southeast Asia and Australia\n- **Germany (Frankfurt)** — covers Europe\n- **USA (East Coast)** — covers North and South America\n\nIf your players are spread globally, consider running multiple regional servers and routing players to the nearest one.\n\n## Server-Side Optimisation\n\nOnce you've picked the right location, optimise the server itself:\n\n- **Allocate enough RAM**: Swapping to disk adds significant latency\n- **Keep the CPU headroom above 70%**: Sustained high CPU usage increases tick processing time\n- **Use NVMe storage**: For games that do frequent world saves, disk I/O matters\n- **Limit unnecessary plugins**: Each plugin adds overhead to every tick\n\n## Monitoring\n\nSet up latency monitoring from multiple locations, not just your own connection. Tools like our built-in server monitoring, or third-party services, will alert you if players in a specific region are experiencing degraded performance — before they open a support ticket.\n\nGood latency is mostly about geography and resource allocation. Get those right, and most other issues are marginal.",
+      "author": {
+        "name": "Infrastructure Team",
+        "role": "Aspire Hosting",
+        "avatar": "/authors/infra-team.jpg"
+      },
+      "category": "hosting-news",
+      "tags": ["gaming", "latency", "ping", "game-servers", "performance"],
+      "featured": false,
+      "published": true,
+      "publishedAt": "2025-03-15T09:30:00Z",
+      "updatedAt": "2025-03-15T09:30:00Z",
+      "readTime": "5 min read",
+      "image": "/blog/discord.jpg",
+      "seo": {
+        "title": "Why Low-Latency Hosting Matters for Online Gaming — Aspire Hosting",
+        "description": "A technical guide to understanding and reducing server latency for game hosting — location selection, tick rate, and optimisation.",
+        "keywords": ["game server latency", "low ping hosting", "minecraft server performance", "game hosting"]
+      }
+    }
+  ],
+  "settings": {
+    "postsPerPage": 6,
+    "featuredPostsCount": 1,
+    "recentPostsCount": 3,
+    "enableComments": false,
+    "enableSharing": true,
+    "enableSearch": true,
+    "enableCategories": true,
+    "enableTags": true,
+    "enableAuthorInfo": true,
+    "enableReadTime": true,
+    "enableRelatedPosts": true
+  }
+}

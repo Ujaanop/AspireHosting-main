@@ -1,0 +1,153 @@
+{
+  "mainNavigation": [
+    {
+      "name": "Services",
+      "href": "#",
+      "icon": "GrServerCluster",
+      "hasDropdown": true,
+      "dropdownType": "services",
+      "dropdownItems": [
+        {
+          "name": "Games",
+          "href": "/games",
+          "icon": "Gamepad2",
+          "description": "High-performance game servers with DDoS protection"
+        },
+        {
+          "name": "Cloud VPS",
+          "href": "/vps",
+          "icon": "Cloud",
+          "description": "Scalable virtual private servers with full root access"
+        },
+        {
+          "name": "Dedicated",
+          "href": "/dedicated",
+          "icon": "Server",
+          "description": "Bare metal servers for maximum performance"
+        },
+        {
+          "name": "Web Hosting",
+          "href": "/webhosting",
+          "icon": "Globe",
+          "description": "Fast and reliable web hosting solutions"
+        }
+      ]
+    },
+    {
+      "name": "Discord",
+      "href": "/discord",
+      "icon": "FaDiscord",
+      "hasDropdown": false
+    },
+    {
+      "name": "Company Info",
+      "href": "#",
+      "icon": "Building",
+      "hasDropdown": true,
+      "dropdownType": "company",
+      "dropdownItems": [
+        {
+          "name": "Blog",
+          "href": "/blog",
+          "icon": "FileText",
+          "description": "Latest news, tutorials, and updates"
+        },
+        {
+          "name": "About Us",
+          "href": "/about-us",
+          "icon": "Info",
+          "description": "Learn more about our company"
+        },
+        {
+          "name": "Infrastructure",
+          "href": "/infrastructure",
+          "icon": "Network",
+          "description": "Our global network, hardware and data centers"
+        },
+        {
+          "name": "Status Page",
+          "href": "https://aspirehosting.instatus.com/",
+          "icon": "Globe",
+          "description": "Our Status Page"
+        },
+        {
+          "name": "Trustpilot",
+          "href": "https://www.trustpilot.com/review/aspirehosting.in",
+          "icon": "Shield",
+          "description": "Our Trustpilot Reviews"
+        },
+        {
+          "name": "Careers",
+          "href": "/careers",
+          "icon": "Users",
+          "description": "Join our team"
+        }
+      ]
+    },
+    {
+      "name": "Legal",
+      "href": "/terms-of-services",
+      "icon": "FileText",
+      "hasDropdown": true,
+      "dropdownType": "legal",
+      "dropdownItems": [
+        {
+          "name": "Terms of Service",
+          "href": "/terms-of-services",
+          "icon": "FileText",
+          "description": "Our service agreement and terms"
+        },
+        {
+          "name": "Privacy Policy",
+          "href": "/privacy-policy",
+          "icon": "Shield",
+          "description": "How we protect your privacy"
+        },
+        {
+          "name": "Service Level Agreement",
+          "href": "/service-level-agreement",
+          "icon": "Building",
+          "description": "Our commitment to service quality"
+        },
+        {
+          "name": "Acceptable Usage Policy",
+          "href": "/acceptable-usage-policy",
+          "icon": "Info",
+          "description": "Our usage guidelines"
+        },
+        {
+          "name": "Refund & Cancellation Policy",
+          "href": "/refund-policy",
+          "icon": "Network",
+          "description": "Our refund and cancellation policy"
+        },
+        {
+          "name": "Fair Usage Policy",
+          "href": "/fair-usage-policy",
+          "icon": "Users",
+          "description": "Our fair usage guidelines"
+        }
+      ]
+    }
+  ],
+  "socialLinks": [
+    {
+      "name": "Discord",
+      "href": "https://discord.gg/B7J4dPZceh",
+      "icon": "discord"
+    }
+  ],
+  "clientSpace": {
+    "name": "Login",
+    "href": "https://billing.aspirehosting.net/login",
+    "icon": "User"
+  },
+  "banner": {
+    "show": true,
+    "text": "26% OFF now on all Plans for New Year! Use code: NEWYEAR26",
+    "couponCode": "NEWYEAR26",
+    "useThemeColor": true,
+    "backgroundColor": "bg-orange-400",
+    "fallbackColor": "bg-orange-400"
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "termsOfService": {
+    "title": "Terms of Service",
+    "lastUpdated": "July 2025",
+    "companyName": "Aspire Hosting",
+    "websiteUrl": "https://my.aspirehosting.in",
+    "contactEmail": "support@aspirehosting.in",
+    "sections": [
+      {
+        "title": "1. Acceptance of Terms",
+        "content": "By accessing and using our services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+      },
+      {
+        "title": "2. Service Description",
+        "content": "We provide VPS hosting, dedicated servers, and game server hosting services. Our services are subject to availability and may be modified, suspended, or discontinued at any time without notice."
+      },
+      {
+        "title": "3. User Responsibilities",
+        "content": "You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account."
+      },
+      {
+        "title": "4. Acceptable Use Policy",
+        "content": "You agree not to use our services for any unlawful purpose or in any way that could damage, disable, overburden, or impair our servers or networks. Prohibited activities include but are not limited to: illegal content distribution, spam, malware distribution, and DDoS attacks."
+      },
+      {
+        "title": "5. Payment Terms",
+        "content": "Payment is due in advance for all services. We accept various payment methods as displayed on our website. Failure to pay may result in service suspension or termination."
+      },
+      {
+        "title": "6. Service Level Agreement",
+        "content": "We strive to maintain 99.9% uptime for our services. In case of extended downtime, service credits may be provided as outlined in our SLA documentation."
+      },
+      {
+        "title": "7. Data Protection",
+        "content": "We implement appropriate security measures to protect your data. However, you are responsible for maintaining backups of your data. We are not liable for data loss."
+      },
+      {
+        "title": "8. Limitation of Liability",
+        "content": "Our liability is limited to the amount paid for the service in the preceding 12 months. We are not liable for any indirect, incidental, or consequential damages."
+      },
+      {
+        "title": "9. Termination",
+        "content": "Either party may terminate this agreement at any time. Upon termination, your access to the services will be discontinued, and any outstanding fees become immediately due."
+      },
+      {
+        "title": "10. Changes to Terms",
+        "content": "We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting. Your continued use of the service constitutes acceptance of the modified terms."
+      }
+    ]
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "July 2025",
+    "companyName": "Aspire Hosting",
+    "websiteUrl": "https://my.aspirehosting.in",
+    "contactEmail": "support@aspirehosting.in",
+    "sections": [
+      {
+        "title": "1. Information We Collect",
+        "content": "We collect information you provide directly to us, such as when you create an account, make a purchase, or contact us for support. This may include your name, email address, billing information, and technical support communications."
+      },
+      {
+        "title": "2. How We Use Your Information",
+        "content": "We use the information we collect to provide, maintain, and improve our services, process transactions, send you technical notices and support messages, and communicate with you about products, services, and promotional offers."
+      },
+      {
+        "title": "3. Information Sharing",
+        "content": "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy. We may share information with trusted service providers who assist us in operating our website and conducting our business."
+      },
+      {
+        "title": "4. Data Security",
+        "content": "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure."
+      },
+      {
+        "title": "5. Cookies and Tracking",
+        "content": "We use cookies and similar tracking technologies to enhance your experience on our website. You can control cookie settings through your browser preferences."
+      },
+      {
+        "title": "6. Data Retention",
+        "content": "We retain your personal information for as long as necessary to provide our services and fulfill the purposes outlined in this policy, unless a longer retention period is required by law."
+      },
+      {
+        "title": "7. Your Rights",
+        "content": "You have the right to access, update, or delete your personal information. You may also opt out of certain communications from us. Contact us to exercise these rights."
+      },
+      {
+        "title": "8. Third-Party Services",
+        "content": "Our website may contain links to third-party websites or services. We are not responsible for the privacy practices of these third parties."
+      },
+      {
+        "title": "9. International Data Transfers",
+        "content": "Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place for such transfers."
+      },
+      {
+        "title": "10. Changes to This Policy",
+        "content": "We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the 'Last Updated' date."
+      }
+    ]
+  },
+"serviceLevelAgreement": {
+  "title": "Service Level Agreement",
+  "lastUpdated": "July 12, 2024",
+  "companyName": "Aspire Hosting",
+  "websiteUrl": "https://my.aspirehosting.in",
+  "contactEmail": "support@aspirehosting.in",
+  "sections": [
+    {
+      "title": "1. Service Availability",
+      "content": "Aspire Hosting aims to maintain a high level of service availability, ensuring robust uptime rates excluding scheduled maintenance, emergency situations, force majeure events, and factors outside our reasonable control."
+    },
+    {
+      "title": "2. Support Response Time",
+      "content": "Our customer support team is available 8 hours a day, Monday through Saturday. On Sundays, support is reserved for emergency situations only. We aim to respond to support inquiries within 24 hours during our operational hours. If a solution cannot be provided within 24 hours, we will alert you and may request additional time depending on the complexity of the issue. Response times are measured during normal business hours."
+    },
+    {
+      "title": "3. Scheduled Maintenance",
+      "content": "To maintain and improve our services, Aspire Hosting may schedule planned maintenance. We will make reasonable efforts to notify customers in advance via email or our website. Scheduled maintenance is not considered downtime."
+    },
+    {
+      "title": "4. Security",
+      "content": "We employ industry-standard security measures to protect customer data. Customers are responsible for implementing additional security measures as needed for their websites and applications."
+    },
+    {
+      "title": "5. Exclusions",
+      "content": "This SLA does not apply to issues caused by factors outside of our reasonable control, customer misuse of resources, violation of our Terms of Service, or third-party services/software not under Aspire Hosting's direct control."
+    },
+    {
+      "title": "6. Reporting Issues",
+      "content": "Customers must report service issues promptly through our designated support channels to receive assistance."
+    },
+    {
+      "title": "7. Review and Revision",
+      "content": "Aspire Hosting reviews this SLA periodically and reserves the right to update or modify it. Any changes will be communicated to users, and the updated SLA will take effect immediately upon posting."
+    }
+  ]
+},
+"acceptableUsagePolicy": {
+  "title": "Acceptable Usage Policy",
+  "lastUpdated": "August 20, 2025",
+  "companyName": "Aspire Hosting",
+  "websiteUrl": "https://my.aspirehosting.in",
+  "contactEmail": "support@aspirehosting.in",
+  "sections": [
+    {
+      "title": "1. General Conduct",
+      "content": "You agree to use our services in a lawful, ethical manner that does not interfere with the rights of others. You may not use Aspire Hosting services for hosting or distributing malware, phishing sites, DoS/DDoS attacks, botnets, distributing copyrighted content without authorization, promoting terrorism or hate speech, sending unsolicited bulk emails (spam), or IP spoofing and network packet manipulation."
+    },
+    {
+      "title": "2. Resource Fair Usage",
+      "content": "All services are governed by our Fair Use Policy. Resources must be used responsibly to ensure server stability."
+    },
+    {
+      "title": "2.1 CPU Usage (Virtual Servers)",
+      "content": "CPU cores on VPS/VDS plans are shared and burstable unless otherwise stated. Sustained high CPU use (100% for long periods) may result in throttling or investigation. Dedicated core allocation varies by CPU model and RAM amount. If your usage negatively impacts others, your VM may be capped or suspended."
+    },
+    {
+      "title": "2.2 CPU Usage (Web Hosting)",
+      "content": "LVE limits apply per site. Excessive use (e.g., >25% of 1 full core) may lead to adjusted limits or temporary restrictions."
+    },
+    {
+      "title": "2.3 Cryptocurrency Projects",
+      "content": "Cryptocurrency and blockchain projects that cause constant high CPU/disk usage (e.g., Monero, Qilibirum) are not allowed on shared infrastructure. Projects like Flux may be allowed with prior approval. Cryptocurrency projects are permitted on dedicated servers provided they do not excessively wear out disks. No refunds will be issued for suspended VPS services due to crypto misuse."
+    },
+    {
+      "title": "2.4 Bandwidth Usage",
+      "content": "\"Unmetered\" plans are subject to reasonable use. Sustained usage beyond 30–50TB/month or constant 10 Gbps may result in review. Sustained usage above 100–200 Mbps (95th percentile) may be limited or flagged."
+    },
+    {
+      "title": "2.5 I/O Usage",
+      "content": "I/O is not strictly capped, but applications that damage SSDs (e.g., Chia plotting) are prohibited. VPS and dedicated clients must avoid activities that degrade disk health for others."
+    },
+    {
+      "title": "3. Network Abuse",
+      "content": "You must not attempt unauthorized access to systems or networks, run port scanners, brute-force scripts, or exploit kits. Proxies/VPNs may not be used for illegal purposes. Spam relays and open relay abuse are prohibited. TOR exit nodes may be allowed with prior approval."
+    },
+    {
+      "title": "4. Spam and Email Policy",
+      "content": "Port 25 is blocked by default on VPS/VDS. You may use external SMTP services (e.g., Amazon SES). Sending bulk or unsolicited email is prohibited. Services found spamming may be terminated, and a $25 IP cleaning fee may be charged."
+    },
+    {
+      "title": "5. Fraudulent Activity and Identity",
+      "content": "Submitting fake names, false addresses, or misleading account details is prohibited. Fraudulent accounts may be suspended or terminated immediately. Chargebacks are treated as fraud, and we may provide logs and data to payment processors to contest them."
+    },
+    {
+      "title": "6. Abuse Handling and Response Time",
+      "content": "If we receive an abuse complaint (e.g., DMCA, spam, hacking), you must respond within 24 hours. Failure to respond may result in suspension or termination after 7 days. Severe violations may lead to immediate suspension."
+    },
+    {
+      "title": "7. Legal Compliance",
+      "content": "You are responsible for ensuring compliance with Indian laws (our base jurisdiction) and the laws of the country where your server is hosted. We respond to valid legal requests, including subpoenas and copyright notices (DMCA or EUCD equivalents)."
+    },
+    {
+      "title": "8. Data Loss and Backups",
+      "content": "We are not responsible for data loss. Customers must maintain external backups even if optional backup features are provided."
+    },
+    {
+      "title": "9. Policy Enforcement",
+      "content": "We reserve the right to monitor resource usage, investigate abuse, throttle or suspend offending services, and terminate accounts in severe or repeated cases. We may refuse service to individuals or organizations that pose risks to our infrastructure or reputation."
+    },
+    {
+      "title": "10. Changes to This Policy",
+      "content": "This Acceptable Use Policy may be updated periodically. It is your responsibility to review changes. Major updates may be announced via email or dashboard notifications."
+    }
+  ]
+},
+"refundPolicy": {
+  "title": "Refund Policy",
+  "lastUpdated": "January 2025",
+  "companyName": "Aspire Hosting",
+  "websiteUrl": "https://my.aspirehosting.in",
+  "contactEmail": "support@aspirehosting.in",
+  "sections": [
+    {
+      "title": "1. Refund Eligibility",
+      "content": "Aspire Hosting offers a 24-hour refund policy from the date of purchase for our web hosting services. You are eligible for a refund if you meet the following conditions: Your request for a refund is submitted within 24 hours of the initial purchase. Your account is in good standing with no violations of our Terms of Service. If the payment was made in cryptocurrency, it will be refunded as account credits. If the payment was made using a coupon code, a refund will not be possible. If the payment was made using PayPal and was less than $1.50 USD, a refund will be denied."
+    },
+    {
+      "title": "2. Valid Reasons for Refund",
+      "content": "Valid reasons for a refund include: Unresolved technical issues preventing the use of our services. Failure to deliver the promised services within the specified timeframe. Any misrepresentation of our services that significantly differs from what was described at the time of purchase."
+    },
+    {
+      "title": "3. Refund Process",
+      "content": "To request a refund, please contact our customer support team within the specified 24-hour period. You can reach us through our support tickets. Provide your account details, the reason for the refund, and any relevant information to assist us in processing your request."
+    },
+    {
+      "title": "4. Refund Exceptions",
+      "content": "Refunds will not be granted in the following situations: The 24-hour refund window has expired. If account credits were purchased, there will be no refund for them. Violation of our Terms of Service or Acceptable Use Policy. Services that have been suspended or terminated due to non-compliance. If an item is marked as out of stock through dropdowns or product titles, and you proceed with the order, a refund will not be issued. Instead, the amount will be added to your account credits. No refunds will be provided on service renewals. Custom Plans are not eligible for refunds, regardless of the reason. If a payment was made through PayPal subscriptions, no refund will be granted. It is the customer's responsibility to cancel the subscription before renewal."
+    },
+    {
+      "title": "5. Products Not Entitled to Refunds",
+      "content": "Products that are not entitled to Refunds: Standard VPS Florida, Cloud Server UK, UK DirectAdmin Reseller Hosting, Standard VPS Kansas City, Domains."
+    },
+    {
+      "title": "6. Payment Gateways",
+      "content": "Following Payment Gateways have some rules: Cryptomus (All Payments are final, if requested it can be refunded in account credits), Wert (All Payments are final, if requested it can be refunded in account credits), Pay4bit (All Payments are final, if requested it can be refunded in account credits), PayPal (If a refund is requested in the first 24 hours with a valid/genuine reason and is eligible, a refund will be processed with the exact amount received on our end. That would mean if we received 3 USD out of 3.5 USD then only 3 USD will be refunded as the 0.50 USD was taken by PayPal fee)."
+    },
+    {
+      "title": "7. Processing Time",
+      "content": "Once your refund request is received and approved, we will process the refund within 2-3 Business Days. The refunded amount will be credited back to the original payment method used for the purchase."
+    },
+    {
+      "title": "8. Cancellation Policy",
+      "content": "You can cancel your service by navigating to 'Services' and clicking 'Cancel'; however, refunds won't be processed if the request is made after 24 hours, and applicable conditions apply. If PayPal was used to purchase the service and if the service was later cancelled, it falls under your responsibility to cancel the PayPal subscription on your end to avoid automatic payments to continue coming after cancelling the Service on Aspire Hosting."
+    },
+    {
+      "title": "9. Contact Information",
+      "content": "If you have any questions or concerns about our refund policy, please contact our customer support team at our support tickets."
+    },
+    {
+      "title": "10. Changes to Refund Policy",
+      "content": "Aspire Hosting reserves the right to update or modify this refund policy at any time. Any changes will be communicated to users, and the updated policy will be effective immediately upon posting."
+    }
+  ]
+},
+"fairUsagePolicy": {
+  "title": "Fair Usage Policy",
+  "lastUpdated": "January 2025",
+  "companyName": "Aspire Hosting",
+  "websiteUrl": "https://my.aspirehosting.in",
+  "contactEmail": "support@aspirehosting.in",
+  "sections": [
+    {
+      "title": "1. Overview",
+      "content": "Aspire Hosting is committed to providing a reliable and high-quality web hosting service to all our customers. This Fair Usage Policy (\"FUP\") outlines acceptable usage of our services to ensure fair and equitable resource distribution."
+    },
+    {
+      "title": "2. Bandwidth and Resource Usage",
+      "content": "Our hosting plans come with specified bandwidth allocations. For plans advertised as \"500Mbps unmetered,\" this means the bandwidth speed is allocated at 500 Mbps with unmetered data transfer, allowing unrestricted usage within this speed limit. Excessive use that exceeds the normal and reasonable limits may be considered a violation of this policy. Aspire Hosting reserves the right to review and take appropriate action against accounts exceeding these limits. Specifically for Minecraft hosting, we request that all your backups stay under 60-80 GB. Any backups exceeding this limit will be subject to restrictions. The full allotted CPU to your VPS can be used, but not 24/7. For example, if allocated 4vCores, the entire 4vCores cannot be used 24/7."
+    },
+    {
+      "title": "3. Prohibited Activities",
+      "content": "The following activities are strictly prohibited under this Fair Usage Policy: Excessive Resource Consumption: Any usage that adversely impacts server performance or disrupts the experience of other users. Abuse of Network Resources: Any attempt to undermine the integrity of our network, including but not limited to, malicious activities, denial of service attacks, and unauthorized access. Spam and Unsolicited Communication: Sending unsolicited emails, messages, or any form of communication that may be considered spam. Illegal Content: Hosting or distributing content that violates local, national, or international laws."
+    },
+    {
+      "title": "4. Monitoring and Enforcement",
+      "content": "Aspire Hosting employs various tools and monitoring systems to identify accounts that may be in violation of this Fair Usage Policy. In the event of a potential violation, we may take corrective action, including, but not limited to, warning the user, suspending the account, or terminating services."
+    },
+    {
+      "title": "5. Notification",
+      "content": "If your account is found to be in violation of this policy, Aspire Hosting will make reasonable efforts to notify you. You will be given an opportunity to rectify the situation within a specified timeframe."
+    },
+    {
+      "title": "6. Resource Allocation Adjustments",
+      "content": "In cases of excessive resource usage impacting server stability or the experience of other users, Aspire Hosting reserves the right to adjust resource allocations or offer alternative solutions to affected users. Domain registrations are subject to fair use, and any activity that monopolizes resources, such as bulk domain registration for spamming or cybersquatting, is prohibited and may result in suspension or termination of your service."
+    },
+    {
+      "title": "7. Unmetered Storage Clause for DirectAdmin Unmetered Plan",
+      "content": "Due to the unmetered nature of the DirectAdmin plan, Aspire Hosting reserves the right to request that customers with excessively high usage migrate to a VPS for better performance and resource management."
+    },
+    {
+      "title": "8. Appeals",
+      "content": "If you believe your account was flagged in error or if you have rectified the issues leading to a violation, you may appeal the decision by contacting our support team."
+    },
+    {
+      "title": "9. Changes to Fair Usage Policy",
+      "content": "Aspire Hosting reserves the right to update or modify this Fair Usage Policy at any time. Any changes will be communicated to users, and the updated policy will be effective immediately upon posting."
+    }
+  ]
+}
+}

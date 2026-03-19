@@ -1,0 +1,713 @@
+{
+  "planTypes": [
+    {
+      "id": "amd-epyc-7502p",
+      "name": "AMD EPYC 7502P",
+      "displayName": "AMD EPYC 7502P",
+      "image": "/cpu/epyc.jpeg"
+    },
+    {
+      "id": "intel-2680v4",
+      "name": "Intel Xeon 2680v4",
+      "displayName": "Intel Xeon 2680v4",
+      "image": "/cpu/intel-1.jpg"
+    },
+    {
+      "id": "intel-gold-6152",
+      "name": "Intel Xeon Gold 6152",
+      "displayName": "Intel Xeon Gold 6152",
+      "image": "/cpu/xeon-gold.png"
+    },
+    {
+      "id": "ryzen9-9950x",
+      "name": "AMD Ryzen 9 9950X",
+      "displayName": "AMD Ryzen 9 9950X",
+      "image": "/cpu/amd-r9.webp"
+    },
+    {
+      "id": "intel-2698v4",
+      "name": "Intel Xeon 2698v4",
+      "displayName": "intel Xeon 2698v4",
+      "image": "/cpu/intel-1.jpg"
+    }
+  ],
+  "locations": [
+    {
+      "id": "india",
+      "name": "India",
+      "flag": "/flags/india.png",
+      "displayName": "India",
+      "availableCpus": [
+        "intel-2680v4",
+        "ryzen9-9950x"
+      ]
+    },
+    {
+      "id": "usa",
+      "name": "USA",
+      "flag": "/flags/usa.png",
+      "displayName": "USA",
+      "availableCpus": [
+        "intel-gold-6152"
+      ]
+    },
+    {
+      "id": "germany",
+      "name": "Germany",
+      "flag": "/flags/germany.png",
+      "displayName": "Germany",
+      "availableCpus": [
+        "amd-epyc-7502p"
+      ]
+    }
+  ],
+  "plans": {
+    "amd-epyc-7502p": [
+      {
+        "id": "standard01",
+        "name": "Standard01",
+        "badge": "30s",
+        "image": "/cpu/epyc.jpeg",
+        "cpu": "2 Core",
+        "cpuDetail": "Cores",
+        "ram": "2 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "30 GB",
+        "storageDetail": "NVMe SSD",
+        "price": "$3",
+        "originalPrice": "$3",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-2gb",
+        "locations": [
+          "germany"
+        ],
+        "locationOrderLinks": {
+          "germany": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-2gb"
+        },
+        "locationComingSoon": {
+          "india": true,
+          "usa": true
+        },
+        "comingSoon": false
+      },
+      {
+        "id": "standard02",
+        "name": "Standard02",
+        "badge": "30s",
+        "image": "/cpu/epyc.jpeg",
+        "cpu": "3 Core",
+        "cpuDetail": "Cores",
+        "ram": "4 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "70 GB",
+        "storageDetail": "NVMe SSD",
+        "price": "$5",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-4gb",
+        "locations": [
+          "germany"
+        ],
+        "locationOrderLinks": {
+          "germany": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-4gb"
+        },
+        "locationComingSoon": {
+          "india": true,
+          "usa": true
+        },
+        "comingSoon": false,
+        "originalPrice": "$5"
+      },
+      {
+        "id": "standard03",
+        "name": "Standard03",
+        "badge": "30s",
+        "image": "/cpu/epyc.jpeg",
+        "cpu": "4 Cores",
+        "cpuDetail": "Cores",
+        "ram": "8 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "120 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "3 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$10",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-8gb",
+        "locations": [
+          "germany"
+        ],
+        "locationOrderLinks": {
+          "germany": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-8gb"
+        },
+        "locationComingSoon": {
+          "india": true,
+          "usa": true
+        },
+        "comingSoon": false,
+        "originalPrice": "$10"
+      },
+      {
+        "id": "standard04",
+        "name": "Standard04",
+        "badge": "30s",
+        "image": "/cpu/epyc.jpeg",
+        "cpu": "5 Cores",
+        "cpuDetail": "Cores",
+        "ram": "12 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "160 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$15.00",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-12gb",
+        "locations": [
+          "germany"
+        ],
+        "locationOrderLinks": {
+          "germany": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-12gb"
+        },
+        "locationComingSoon": {
+          "india": true,
+          "usa": true
+        },
+        "comingSoon": false,
+        "originalPrice": "$15"
+      },
+      {
+        "id": "standard05",
+        "name": "Standard05",
+        "badge": "30s",
+        "image": "/cpu/epyc.jpeg",
+        "cpu": "6 Cores",
+        "cpuDetail": "Cores",
+        "ram": "16 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "210 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$19.20",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-16gb",
+        "locations": [
+          "germany"
+        ],
+        "locationOrderLinks": {
+          "germany": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-16gb"
+        },
+        "locationComingSoon": {
+          "india": true,
+          "usa": true
+        },
+        "comingSoon": false,
+        "originalPrice": "$19.20"
+      },
+      {
+        "id": "standard06",
+        "name": "Standard06",
+        "badge": "30s",
+        "image": "/cpu/epyc.jpeg",
+        "cpu": "7 Cores",
+        "cpuDetail": "Cores",
+        "ram": "24 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "250 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$28.80",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-24gb",
+        "locations": [
+          "germany"
+        ],
+        "locationOrderLinks": {
+          "germany": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-24gb"
+        },
+        "locationComingSoon": {
+          "india": true,
+          "usa": true
+        },
+        "comingSoon": false,
+        "originalPrice": "$28.80"
+      },
+      {
+        "id": "standard07",
+        "name": "Standard07",
+        "badge": "30s",
+        "image": "/cpu/epyc.jpeg",
+        "cpu": "8 Cores",
+        "cpuDetail": "Cores",
+        "ram": "32 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "300 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$38.40",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-32gb",
+        "locations": [
+          "germany"
+        ],
+        "locationOrderLinks": {
+          "germany": "https://billing.aspirehosting.net/store/cloud-standard-frankfurt-eu-amd/cloud-standard-frankfurt-32gb"
+        },
+        "locationComingSoon": {
+          "india": true,
+          "usa": true
+        },
+        "comingSoon": false,
+        "originalPrice": "$38.40"
+      }
+    ],
+    "intel-gold-6152": [
+      {
+        "id": "standard01",
+        "name": "Standard01",
+        "badge": "30s",
+        "image": "/cpu/xeon-gold.png",
+        "cpu": "2 Core",
+        "cpuDetail": "Cores",
+        "ram": "2 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "30 GB",
+        "storageDetail": "NVMe SSD",
+        "price": "$3",
+        "originalPrice": "$3",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-miami-fl-xeon/cloud-standard-miami-2gb",
+        "locations": [
+          "usa"
+        ],
+        "locationOrderLinks": {
+          "usa": "https://billing.aspirehosting.net/store/cloud-standard-miami-fl-xeon/cloud-standard-miami-2gb"
+        },
+        "locationComingSoon": {
+          "india": true,
+          "germany": true,
+          "usa": false
+        },
+        "comingSoon": true
+      },
+      {
+        "id": "standard02",
+        "name": "Standard02",
+        "badge": "30s",
+        "image": "/cpu/xeon-gold.png",
+        "cpu": "3 Core",
+        "cpuDetail": "Cores",
+        "ram": "4 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "70 GB",
+        "storageDetail": "NVMe SSD",
+        "price": "$5",
+        "period": "/mo",
+        "locations": [
+          "usa"
+        ],
+        "locationOrderLinks": {
+          "usa": "https://billing.aspirehosting.net/store/cloud-standard-miami-fl-xeon/cloud-standard-miami-4gb"
+        },
+        "locationComingSoon": {
+          "usa": false
+        },
+        "comingSoon": true,
+        "originalPrice": "$5.00"
+      },
+      {
+        "id": "standard03",
+        "name": "Standard03",
+        "badge": "30s",
+        "image": "/cpu/xeon-gold.png",
+        "cpu": "4 Cores",
+        "cpuDetail": "Cores",
+        "ram": "8 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "120 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "3 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$10",
+        "period": "/mo",
+        "locations": [
+          "usa"
+        ],
+        "locationOrderLinks": {
+          "usa": "https://billing.aspirehosting.net/store/cloud-standard-miami-fl-xeon/cloud-standard-miami-8gb"
+        },
+        "locationComingSoon": {
+          "usa": false
+        },
+        "comingSoon": true,
+        "originalPrice": "$10"
+      },
+      {
+        "id": "standard04",
+        "name": "Standard04",
+        "badge": "30s",
+        "image": "/cpu/xeon-gold.png",
+        "cpu": "5 Cores",
+        "cpuDetail": "Cores",
+        "ram": "12 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "160 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$15.00",
+        "period": "/mo",
+        "locations": [
+          "usa"
+        ],
+        "locationOrderLinks": {
+          "usa": "https://billing.aspirehosting.net/store/cloud-standard-miami-fl-xeon/cloud-standard-miami-12gb"
+        },
+        "locationComingSoon": {
+          "usa": false
+        },
+        "comingSoon": true,
+        "originalPrice": "$15.00"
+      },
+      {
+        "id": "standard05",
+        "name": "Standard05",
+        "badge": "30s",
+        "image": "/cpu/xeon-gold.png",
+        "cpu": "6 Cores",
+        "cpuDetail": "Cores",
+        "ram": "16 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "210 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$19.20",
+        "period": "/mo",
+        "locations": [
+          "usa"
+        ],
+        "locationOrderLinks": {
+          "usa": "https://billing.aspirehosting.net/store/cloud-standard-miami-fl-xeon/cloud-standard-miami-16gb"
+        },
+        "locationComingSoon": {
+          "usa": false
+        },
+        "comingSoon": true,
+        "originalPrice": "$19.20"
+      },
+      {
+        "id": "standard06",
+        "name": "Standard06",
+        "badge": "30s",
+        "image": "/cpu/xeon-gold.png",
+        "cpu": "7 Cores",
+        "cpuDetail": "Cores",
+        "ram": "24 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "250 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$28.80",
+        "period": "/mo",
+        "locations": [
+          "usa"
+        ],
+        "locationOrderLinks": {
+          "usa": "https://billing.aspirehosting.net/store/cloud-standard-miami-fl-xeon/cloud-standard-miami-24gb"
+        },
+        "locationComingSoon": {
+          "usa": false
+        },
+        "comingSoon": true,
+        "originalPrice": "$28.80"
+      },
+      {
+        "id": "standard07",
+        "name": "Standard07",
+        "badge": "30s",
+        "image": "/cpu/xeon-gold.png",
+        "cpu": "8 Cores",
+        "cpuDetail": "Cores",
+        "ram": "32 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "290 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$38.40",
+        "period": "/mo",
+        "locations": [
+          "usa"
+        ],
+        "locationOrderLinks": {
+          "usa": "https://billing.aspirehosting.net/store/cloud-standard-miami-fl-xeon/cloud-standard-miami-32gb"
+        },
+        "locationComingSoon": {
+          "usa": false
+        },
+        "comingSoon": true,
+        "originalPrice": "$38.40"
+      }
+    ],
+    "intel-2680v4": [
+      {
+        "id": "standard01-india",
+        "name": "Standard01",
+        "badge": "30s",
+        "image": "/cpu/intel-1.jpg",
+        "cpu": "4 Cores",
+        "cpuDetail": "Cores",
+        "ram": "8 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "120 GB",
+        "storageDetail": "SATA SSD",
+        "bandwidth": "3 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$10",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-8gb",
+        "locations": [
+          "india"
+        ],
+        "locationOrderLinks": {
+          "india": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-8gb"
+        },
+        "locationComingSoon": {
+          "india": false
+        },
+        "comingSoon": false,
+        "originalPrice": "$10"
+      },
+      {
+        "id": "standard02-india",
+        "name": "Standard02",
+        "badge": "30s",
+        "image": "/cpu/intel-1.jpg",
+        "cpu": "5 Cores",
+        "cpuDetail": "Cores",
+        "ram": "12 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "160 GB",
+        "storageDetail": "SATA SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$15.00",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-12gb",
+        "locations": [
+          "india"
+        ],
+        "locationOrderLinks": {
+          "india": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-12gb"
+        },
+        "locationComingSoon": {
+          "india": false
+        },
+        "comingSoon": false,
+        "originalPrice": "$15.00"
+      },
+      {
+        "id": "standard03-india",
+        "name": "Standard03",
+        "badge": "30s",
+        "image": "/cpu/intel-1.jpg",
+        "cpu": "6 Cores",
+        "cpuDetail": "Cores",
+        "ram": "16 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "210 GB",
+        "storageDetail": "SATA SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$19.20",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-16gb",
+        "locations": [
+          "india"
+        ],
+        "locationOrderLinks": {
+          "india": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-16gb"
+        },
+        "locationComingSoon": {
+          "india": false
+        },
+        "comingSoon": false,
+        "originalPrice": "$19.20"
+      },
+      {
+        "id": "standard04-india",
+        "name": "Standard04",
+        "badge": "30s",
+        "image": "/cpu/intel-1.jpg",
+        "cpu": "7 Cores",
+        "cpuDetail": "Cores",
+        "ram": "24 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "250 GB",
+        "storageDetail": "SATA SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$28.80",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-24gb",
+        "locations": [
+          "india"
+        ],
+        "locationOrderLinks": {
+          "india": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-24gb"
+        },
+        "locationComingSoon": {
+          "india": false
+        },
+        "comingSoon": false,
+        "originalPrice": "$28.80"
+      },
+      {
+        "id": "standard05-india",
+        "name": "Standard05",
+        "badge": "30s",
+        "image": "/cpu/intel-1.jpg",
+        "cpu": "8 Cores",
+        "cpuDetail": "Cores",
+        "ram": "32 GB",
+        "ramDetail": "DDR4 RAM",
+        "storage": "300 GB",
+        "storageDetail": "SATA SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$38.40",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-32gb",
+        "locations": [
+          "india"
+        ],
+        "locationOrderLinks": {
+          "india": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-32gb"
+        },
+        "locationComingSoon": {
+          "india": false
+        },
+        "comingSoon": false,
+        "originalPrice": "$38.40"
+      }
+    ],
+    "ryzen9-9950x": [
+      {
+        "id": "premium01-india",
+        "name": "Premium01",
+        "badge": "30s",
+        "image": "/cpu/amd-r9.webp",
+        "cpu": "2 Cores",
+        "cpuDetail": "Cores",
+        "ram": "8 GB",
+        "ramDetail": "DDR5 RAM",
+        "storage": "80 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "3 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$10",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-8gb",
+        "locations": [
+          "india"
+        ],
+        "locationOrderLinks": {
+          "india": "https://billing.aspirehosting.net/store/cloud-premium-india-ryzen-9/cloud-premium-india-8gb"
+        },
+        "locationComingSoon": {
+          "india": false
+        },
+        "comingSoon": true,
+        "originalPrice": "$16"
+      },
+      {
+        "id": "premium02-india",
+        "name": "Premium02",
+        "badge": "30s",
+        "image": "/cpu/amd-r9.webp",
+        "cpu": "4 Cores",
+        "cpuDetail": "Cores",
+        "ram": "16 GB",
+        "ramDetail": "DDR5 RAM",
+        "storage": "160 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$15.00",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-12gb",
+        "locations": [
+          "india"
+        ],
+        "locationOrderLinks": {
+          "india": "https://billing.aspirehosting.net/store/cloud-premium-india-ryzen-9/cloud-premium-india-16gb"
+        },
+        "locationComingSoon": {
+          "india": false
+        },
+        "comingSoon": true,
+        "originalPrice": "$32"
+      },
+      {
+        "id": "premium03-india",
+        "name": "Premium03",
+        "badge": "30s",
+        "image": "/cpu/amd-r9.webp",
+        "cpu": "6 Cores",
+        "cpuDetail": "Cores",
+        "ram": "24 GB",
+        "ramDetail": "DDR5 RAM",
+        "storage": "240 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$19.20",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-standard-india-in-xeon/cloud-standard-india-16gb",
+        "locations": [
+          "india"
+        ],
+        "locationOrderLinks": {
+          "india": "https://billing.aspirehosting.net/store/cloud-premium-india-ryzen-9/cloud-premium-india-24gb"
+        },
+        "locationComingSoon": {
+          "india": false
+        },
+        "comingSoon": true,
+        "originalPrice": "$48"
+      },
+      {
+        "id": "premium04-india",
+        "name": "Premium04",
+        "badge": "30s",
+        "image": "/cpu/amd-r9.webp",
+        "cpu": "8 Cores",
+        "cpuDetail": "Cores",
+        "ram": "32 GB",
+        "ramDetail": "DDR5 RAM",
+        "storage": "320 GB",
+        "storageDetail": "NVMe SSD",
+        "bandwidth": "4 TB",
+        "bandwidthDetail": "Bandwidth",
+        "price": "$28.80",
+        "period": "/mo",
+        "orderLink": "https://billing.aspirehosting.net/store/cloud-premium-india-ryzen-9/cloud-premium-india-32gb",
+        "locations": [
+          "india"
+        ],
+        "locationOrderLinks": {
+            "india": "https://billing.aspirehosting.net/store/cloud-premium-india-ryzen-9/cloud-premium-india-32gb"
+          },
+        "locationComingSoon": {
+          "india": false
+        },
+        "comingSoon": true,
+        "originalPrice": "$64"
+      }
+    ]
+  }
+}

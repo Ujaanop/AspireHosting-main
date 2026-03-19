@@ -1,0 +1,375 @@
+{
+  "planTypes": [
+    {
+      "id": "budget",
+      "name": "EPYC",
+      "image": "/cpu/ryzen7.png"
+    },
+    {
+      "id": "budget-in",
+      "name": "INTEL",
+      "image": "/cpu/intel-1.jpg"
+    },
+    {
+      "id": "premium-r9",
+      "name": "AMD R9 9950x",
+      "image": "/cpu/amd-r9.webp"
+    }
+  ],
+  "locations": [
+    {
+      "id": "germany",
+      "name": "Germany",
+      "flag": "/flags/germany.png",
+      "availablePlanTypes": [
+        "budget"
+      ]
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "flag": "/flags/singapore.png",
+      "availablePlanTypes": [
+        "budget"
+      ]
+    },
+    {
+      "id": "usa",
+      "name": "USA",
+      "flag": "/flags/usa.png",
+      "availablePlanTypes": [
+        "budget"
+      ]
+    },
+    {
+      "id": "india",
+      "name": "India",
+      "flag": "/flags/india.png",
+      "availablePlanTypes": [
+        "budget-in",
+        "premium-r9"
+      ]
+    }
+  ],
+  "games": [
+    {
+      "id": "minecraft",
+      "name": "Minecraft",
+      "description": "Build, explore, and survive in the ultimate sandbox game",
+      "icon": "/icons/minecraft-icon.webp",
+      "banner": "/banners/minecraft-banners.webp",
+      "featured": true,
+      "startingAt": "$1.50/mo",
+      "primaryColor": "#4CAF50",
+      "plans": {
+        "budget": [
+          {
+            "id": "minecraft-budget-2",
+            "name": "Budget Minecraft 2GB",
+            "type": "budget",
+            "ram": "2 GB",
+            "cpu": "2v Core",
+            "storage": "10GB Nvme",
+            "price": 1.5,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-2gb",
+            "locations": [
+              "usa",
+              "germany",
+              "singapore"
+            ],
+            "locationComingSoon": {
+              "india": true
+            },
+            "originalPrice": "$1.50"
+          },
+          {
+            "id": "minecraft-budget-3",
+            "name": "Budget Minecraft 5GB",
+            "type": "budget",
+            "ram": "5 GB",
+            "cpu": "2v Core",
+            "storage": "15GB Nvme",
+            "price": 3.75,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-5gb",
+            "locations": [
+              "usa",
+              "germany",
+              "singapore"
+            ],
+            "locationComingSoon": {
+              "india": true
+            },
+            "originalPrice": "$3.75"
+          },
+          {
+            "id": "minecraft-budget-4",
+            "name": "Budget Minecraft 6GB",
+            "type": "budget",
+            "ram": "6 GB",
+            "cpu": "2v Core",
+            "storage": "20GB Nvme",
+            "price": 4.5,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-6gb",
+            "locations": [
+              "usa",
+              "germany",
+              "singapore"
+            ],
+            "locationComingSoon": {
+              "india": true
+            },
+            "originalPrice": "$4.50"
+          },
+          {
+            "id": "minecraft-budget-5",
+            "name": "Budget Minecraft 8GB",
+            "type": "budget",
+            "ram": "8 GB",
+            "cpu": "2v Core",
+            "storage": "20GB Nvme",
+            "price": 6,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-8gb",
+            "locations": [
+              "usa",
+              "germany",
+              "singapore"
+            ],
+            "locationComingSoon": {
+              "india": true
+            },
+            "originalPrice": "$6.00"
+          },
+          {
+            "id": "minecraft-budget-6",
+            "name": "Budget Minecraft 12GB",
+            "type": "budget",
+            "ram": "12 GB",
+            "cpu": "2v Core",
+            "storage": "30GB Nvme",
+            "price": 9,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-12gb",
+            "locations": [
+              "usa",
+              "germany",
+              "singapore"
+            ],
+            "locationComingSoon": {
+              "india": true
+            },
+            "originalPrice": "$9.00"
+          },
+          {
+            "id": "minecraft-budget-7",
+            "name": "Budget Minecraft 16GB",
+            "type": "budget",
+            "ram": "16 GB",
+            "cpu": "2v Core",
+            "storage": "50GB Nvme",
+            "price": 12,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-16gb",
+            "locations": [
+              "usa",
+              "germany",
+              "singapore"
+            ],
+            "locationComingSoon": {
+              "india": true
+            },
+            "originalPrice": "$12.00"
+          }
+        ],
+        "budget-in": [
+          {
+            "id": "minecraft-budget-2",
+            "name": "Budget Minecraft 2GB",
+            "type": "budget",
+            "ram": "2 GB",
+            "cpu": "2v Core",
+            "storage": "10GB SSD",
+            "price": 1.5,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-2gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$1.50"
+          },
+          {
+            "id": "minecraft-budget-3",
+            "name": "Budget Minecraft 5GB",
+            "type": "budget",
+            "ram": "5 GB",
+            "cpu": "2v Core",
+            "storage": "15GB SSD",
+            "price": 3.75,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-5gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$3.75"
+          },
+          {
+            "id": "minecraft-budget-4",
+            "name": "Budget Minecraft 6GB",
+            "type": "budget",
+            "ram": "6 GB",
+            "cpu": "2v Core",
+            "storage": "20GB SSD",
+            "price": 4.5,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-6gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$4.50"
+          },
+          {
+            "id": "minecraft-budget-5",
+            "name": "Budget Minecraft 8GB",
+            "type": "budget",
+            "ram": "8 GB",
+            "cpu": "2v Core",
+            "storage": "20GB SSD",
+            "price": 6,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-8gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$6.00"
+          },
+          {
+            "id": "minecraft-budget-6",
+            "name": "Budget Minecraft 12GB",
+            "type": "budget",
+            "ram": "12 GB",
+            "cpu": "2v Core",
+            "storage": "30GB SSD",
+            "price": 9,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-12gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$9.00"
+          },
+          {
+            "id": "minecraft-budget-7",
+            "name": "Budget Minecraft 16GB",
+            "type": "budget",
+            "ram": "16 GB",
+            "cpu": "2v Core",
+            "storage": "50GB SSD",
+            "price": 12,
+            "orderLink": "https://billing.aspirehosting.net/store/budget-minecraft-hosting/budget-minecraft-16gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$12.00"
+          }
+        ],
+        "premium-r9": [
+          {
+            "id": "minecraft-premium-r9-2",
+            "name": "Premium Minecraft 4GB",
+            "type": "budget",
+            "ram": "4 GB DDR5",
+            "cpu": "100%",
+            "storage": "15GB Nvme",
+            "price": 1.5,
+            "orderLink": "https://billing.aspirehosting.net/store/ryzen-9-minecraft-hosting-india/ryzen-9-minecraft-4gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$7"
+          },
+          {
+            "id": "minecraft-premium-r9-3",
+            "name": "Premium Minecraft 6GB",
+            "type": "budget",
+            "ram": "6 GB DDR5",
+            "cpu": "150%",
+            "storage": "15GB Nvme",
+            "price": 3.75,
+            "orderLink": "https://billing.aspirehosting.net/store/ryzen-9-minecraft-hosting-india/ryzen-9-minecraft-6gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$10.50"
+          },
+          {
+            "id": "minecraft-premium-r9-4",
+            "name": "Premium Minecraft 8GB",
+            "type": "budget",
+            "ram": "8 GB DDR5",
+            "cpu": "200%",
+            "storage": "25GB Nvme",
+            "price": 4.5,
+            "orderLink": "https://billing.aspirehosting.net/store/ryzen-9-minecraft-hosting-india/ryzen-9-minecraft-8gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$14"
+          },
+          {
+            "id": "minecraft-premium-r9-5",
+            "name": "Premium Minecraft 12GB",
+            "type": "budget",
+            "ram": "12 GB DDR5",
+            "cpu": "300%",
+            "storage": "40GB Nvme",
+            "price": 6,
+            "orderLink": "https://billing.aspirehosting.net/store/ryzen-9-minecraft-hosting-india/ryzen-9-minecraft-12gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$21"
+          },
+          {
+            "id": "minecraft-premium-r9-6",
+            "name": "Premium Minecraft 16GB",
+            "type": "budget",
+            "ram": "16 GB DDR5",
+            "cpu": "400%",
+            "storage": "60GB Nvme",
+            "price": 9,
+            "orderLink": "https://billing.aspirehosting.net/store/ryzen-9-minecraft-hosting-india/ryzen-9-minecraft-16gb",
+            "locations": [
+              "india"
+            ],
+            "locationComingSoon": {
+              "india": false
+            },
+            "originalPrice": "$28"
+          }
+        ]
+      }
+    }
+  ]
+}

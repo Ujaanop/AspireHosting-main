@@ -1,0 +1,81 @@
+{
+  "discounts": {
+    "vps": {
+      "enabled": true,
+      "discountType": "recurring",
+      "budget": {
+        "percentage": 26,
+        "description": "Budget VPS Hosting Discount"
+      },
+      "premium": {
+        "percentage": 26,
+        "description": "Premium VPS Hosting Discount"
+      },
+      "validFrom": "2024-01-01",
+      "validUntil": "2026-1-1"
+    },
+    "webhosting": {
+      "enabled": false,
+      "discountType": "recurring",
+      "budget": {
+        "percentage": 40,
+        "description": "Budget Web Hosting Discount"
+      },
+      "premium": {
+        "percentage": 26,
+        "description": "Premium Web Hosting Discount"
+      },
+      "validFrom": "2024-01-01",
+      "validUntil": "2024-12-31"
+    },
+    "discord": {
+      "enabled": true,
+      "discountType": "recurring",
+      "budget": {
+        "percentage": 26,
+        "description": "Budget Discord Bot Hosting Discount"
+      },
+      "premium": {
+        "percentage": 26,
+        "description": "Premium Discord Bot Hosting Discount"
+      },
+      "validFrom": "2024-01-01",
+      "validUntil": "2025-12-31"
+    },
+    "games": {
+      "enabled": true,
+      "discountType": "recurring",
+      "budget": {
+        "percentage": 26,
+        "description": "Budget Game Server Hosting Discount"
+      },
+      "premium": {
+        "percentage": 26,
+        "description": "Premium Game Server Hosting Discount"
+      },
+      "validFrom": "2024-01-01",
+      "validUntil": "2026-1-1"
+    },
+    "dedicated": {
+      "enabled": false,
+      "discountType": "recurring",
+      "budget": {
+        "percentage": 25,
+        "description": "Budget Dedicated Server Discount"
+      },
+      "premium": {
+        "percentage": 20,
+        "description": "Premium Dedicated Server Discount"
+      },
+      "validFrom": "2024-01-01",
+      "validUntil": "2024-12-31"
+    }
+  },
+  "globalSettings": {
+    "showDiscountBadge": true,
+    "badgeColor": "red",
+    "badgeText": "Save 26%",
+    "currencySymbol": "$",
+    "roundToNearest": 0.01
+  }
+}

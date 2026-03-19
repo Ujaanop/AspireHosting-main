@@ -1,0 +1,59 @@
+{
+  "navbar": {
+    "brandName": "Aspire Hosting",
+    "brandAccent": ""
+  },
+  "hero": {
+    "title": {
+      "suffixColor": "white",
+      "gameNameColor": "blue"
+    },
+    "games": [
+      {
+        "id": "minecraft",
+        "name": "Minecraft",
+        "displayName": "Minecraft",
+        "banner": "/banners/minecraft-banners.webp",
+        "color": "#4CAF50",
+        "showSuffix": true,
+        "showInDropdown": true
+      },
+      {
+        "id": "vps",
+        "name": "KVM",
+        "displayName": "KVM",
+        "banner": "/banners/kvm-banners.jpg",
+        "color": "#4CAF50",
+        "showSuffix": true,
+        "showInDropdown": false
+      },
+      {
+        "id": "dedicated",
+        "name": "Dedicated",
+        "displayName": "Dedicated",
+        "banner": "/banners/kvm-banners.jpg",
+        "color": "#4CAF50",
+        "showSuffix": true,
+        "showInDropdown": false
+      }
+    ],
+    "cycleInterval": 10000,
+    "partners": [
+      {
+        "name": "Hetzner",
+        "src": "/advertisement/hetzner.png",
+        "loading": "lazy"
+      },
+      {
+        "name": "Intel",
+        "src": "/advertisement/intel.png",
+        "loading": "lazy"
+      },
+      {
+        "name": "Samsung",
+        "src": "/advertisement/samsung.png",
+        "loading": "lazy"
+      }
+    ]
+  }
+}

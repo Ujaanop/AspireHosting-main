@@ -1,0 +1,80 @@
+{
+  "adjustments": {
+    "vps": {
+      "enabled": true,
+      "budget": {
+        "percentage": 10,
+        "description": "Budget VPS Hosting Price Adjustment"
+      },
+      "premium": {
+        "percentage": 10,
+        "description": "Premium VPS Hosting Price Adjustment"
+      },
+      "validFrom": "2024-01-01",
+      "validUntil": "2026-12-31"
+    },
+    "webhosting": {
+      "enabled": false,
+      "budget": {
+        "percentage": 0,
+        "description": "Budget Web Hosting Price Adjustment"
+      },
+      "premium": {
+        "percentage": 0,
+        "description": "Premium Web Hosting Price Adjustment"
+      },
+      "validFrom": "2024-01-01",
+      "validUntil": "2026-12-31"
+    },
+    "discord": {
+      "enabled": false,
+      "budget": {
+        "percentage": 0,
+        "description": "Budget Discord Bot Hosting Price Adjustment"
+      },
+      "premium": {
+        "percentage": 0,
+        "description": "Premium Discord Bot Hosting Price Adjustment"
+      },
+      "validFrom": "2024-01-01",
+      "validUntil": "2026-12-31"
+    },
+    "games": {
+      "enabled": true,
+      "budget": {
+        "percentage": 10,
+        "description": "Budget Game Server Hosting Price Adjustment"
+      },
+      "premium": {
+        "percentage": 10,
+        "description": "Premium Game Server Hosting Price Adjustment"
+      },
+      "validFrom": "2024-01-01",
+      "validUntil": "2026-12-31"
+    },
+    "dedicated": {
+      "enabled": false,
+      "budget": {
+        "percentage": 10,
+        "description": "Budget Dedicated Server Price Adjustment"
+      },
+      "premium": {
+        "percentage": 0,
+        "description": "Premium Dedicated Server Price Adjustment"
+      },
+      "validFrom": "2024-01-01",
+      "validUntil": "2026-12-31"
+    }
+  },
+  "globalSettings": {
+    "currencySymbol": "$",
+    "roundToNearest": 0.01
+  }
+}
+
+
+
+
+
+
+
