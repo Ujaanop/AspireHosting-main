@@ -391,6 +391,27 @@ export default function AdminPage() {
     showToast('All marked as read', 'success')
   }
 
+  // ── Seed ────────────────────────────────────────────────────────────────────
+
+  const [seedResult, setSeedResult] = useState<Record<string, string> | null>(null)
+  const [seeding, setSeeding] = useState(false)
+
+  async function handleSeed() {
+    if (!confirm('This will copy your JSON config files into Redis. Safe to run — skips keys already in Redis. Continue?')) return
+    setSeeding(true)
+    setSeedResult(null)
+    try {
+      const res = await fetch('/api/admin/seed', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      })
+      const data = await res.json()
+      if (res.ok) { setSeedResult(data.results); showToast('Database seeded!', 'success') }
+      else showToast(data.error ?? 'Seed failed', 'error')
+    } catch { showToast('Network error', 'error') }
+    finally { setSeeding(false) }
+  }
+
   async function deleteMessage(id: string) {
     if (!confirm('Delete this message?')) return
     const res = await fetch('/api/contact', {
@@ -476,17 +497,37 @@ export default function AdminPage() {
 
       {/* Top bar */}
       <div className="border-b border-secondary bg-white dark:bg-black/40 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Shield className="w-5 h-5 icon-text-primary" />
+        <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3 min-w-0">
+            <Shield className="w-5 h-5 icon-text-primary flex-shrink-0" />
             <span className="font-semibold text-sm text-gray-900 dark:text-white">Admin Panel</span>
             <span className="text-xs text-gray-400 dark:text-gray-500 hidden sm:inline">· {username}</span>
           </div>
-          <button onClick={logout}
-            className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors px-2 py-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20">
-            <LogOut className="w-3.5 h-3.5" />Sign out
-          </button>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <button onClick={handleSeed} disabled={seeding} title="Seed Redis database from JSON files"
+              className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-2 py-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 disabled:opacity-50">
+              {seeding ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5" />}
+              <span className="hidden sm:inline">Init DB</span>
+            </button>
+            <button onClick={logout}
+              className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors px-2 py-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20">
+              <LogOut className="w-3.5 h-3.5" /><span className="hidden sm:inline">Sign out</span>
+            </button>
+          </div>
         </div>
+        {seedResult && (
+          <div className="max-w-5xl mx-auto px-4 pb-3">
+            <div className="bg-gray-50 dark:bg-white/5 rounded-lg border border-secondary px-4 py-2 flex flex-wrap gap-x-4 gap-y-1">
+              {Object.entries(seedResult).map(([key, status]) => (
+                <span key={key} className="text-xs font-mono">
+                  <span className="text-gray-500 dark:text-gray-400">{key}:</span>{' '}
+                  <span className={status === 'seeded' ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}>{status}</span>
+                </span>
+              ))}
+              <button onClick={() => setSeedResult(null)} className="ml-auto text-gray-400 hover:text-gray-600 text-xs">dismiss</button>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="max-w-5xl mx-auto px-4 py-8">
