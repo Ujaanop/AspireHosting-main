@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { promises as fs } from 'fs'
-import path from 'path'
+import { dbGet, dbSet } from '@/lib/db'
 
-const DISCOUNTS_PATH = path.join(process.cwd(), 'app', 'config', 'discounts.json')
-const NAV_PATH = path.join(process.cwd(), 'app', 'config', 'sections', 'navigation.json')
-const ADMINS_PATH = path.join(process.cwd(), 'app', 'config', 'sections', 'statusAdmins.json')
+const ADMINS_KEY = 'admins'
+const ADMINS_FILE = 'app/config/sections/statusAdmins.json'
+const DISCOUNTS_KEY = 'discounts'
+const DISCOUNTS_FILE = 'app/config/discounts.json'
+const BANNER_KEY = 'banner'
+const NAV_FILE = 'app/config/sections/navigation.json'
 
 async function verifyAdmin(username: string, password: string): Promise<boolean> {
   try {
-    const raw = await fs.readFile(ADMINS_PATH, 'utf-8')
-    const data = JSON.parse(raw)
-    return (data.admins ?? []).some(
-      (a: { username: string; password: string }) =>
-        a.username === username && a.password === password
+    const data = await dbGet<{ admins: { username: string; password: string }[] }>(ADMINS_KEY, ADMINS_FILE)
+    return (data?.admins ?? []).some(
+      (a) => a.username === username && a.password === password
     )
   } catch { return false }
 }
@@ -20,13 +20,13 @@ async function verifyAdmin(username: string, password: string): Promise<boolean>
 // GET — public, returns discounts config + banner
 export async function GET() {
   try {
-    const [discRaw, navRaw] = await Promise.all([
-      fs.readFile(DISCOUNTS_PATH, 'utf-8'),
-      fs.readFile(NAV_PATH, 'utf-8'),
+    const [discounts, navData] = await Promise.all([
+      dbGet(DISCOUNTS_KEY, DISCOUNTS_FILE),
+      dbGet<{ banner: unknown }>(BANNER_KEY, NAV_FILE),
     ])
-    const discounts = JSON.parse(discRaw)
-    const nav = JSON.parse(navRaw)
-    return NextResponse.json({ discounts, banner: nav.banner ?? {} })
+    // When falling back to nav file locally, banner is nested under .banner
+    const banner = (navData as { banner?: unknown })?.banner ?? navData ?? {}
+    return NextResponse.json({ discounts, banner })
   } catch {
     return NextResponse.json({ discounts: {}, banner: {} })
   }
@@ -43,14 +43,20 @@ export async function PATCH(req: NextRequest) {
     }
 
     if (discounts) {
-      await fs.writeFile(DISCOUNTS_PATH, JSON.stringify(discounts, null, 2), 'utf-8')
+      await dbSet(DISCOUNTS_KEY, discounts, DISCOUNTS_FILE)
     }
 
     if (banner !== undefined) {
-      const navRaw = await fs.readFile(NAV_PATH, 'utf-8')
-      const nav = JSON.parse(navRaw)
-      nav.banner = { ...nav.banner, ...banner }
-      await fs.writeFile(NAV_PATH, JSON.stringify(nav, null, 2), 'utf-8')
+      if (process.env.KV_REST_API_URL) {
+        // On KV: store banner directly
+        const existing = await dbGet<Record<string, unknown>>(BANNER_KEY, NAV_FILE) ?? {}
+        await dbSet(BANNER_KEY, { ...existing, ...banner }, NAV_FILE)
+      } else {
+        // Locally: merge into navigation.json under .banner
+        const nav = await dbGet<{ banner: Record<string, unknown> }>(BANNER_KEY, NAV_FILE) ?? { banner: {} }
+        nav.banner = { ...nav.banner, ...banner }
+        await dbSet(BANNER_KEY, nav, NAV_FILE)
+      }
     }
 
     return NextResponse.json({ success: true })

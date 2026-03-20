@@ -1,36 +1,32 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { promises as fs } from 'fs'
-import path from 'path'
+import { dbGet, dbSet } from '@/lib/db'
 
-const SERVERS_PATH = path.join(process.cwd(), 'app', 'config', 'sections', 'statusServers.json')
-const ADMINS_PATH = path.join(process.cwd(), 'app', 'config', 'sections', 'statusAdmins.json')
+interface AdminEntry { username: string; password: string }
 
-interface AdminEntry {
-  username: string
-  password: string
-}
+const ADMINS_KEY = 'admins'
+const ADMINS_FILE = 'app/config/sections/statusAdmins.json'
+const SERVERS_KEY = 'status_servers'
+const SERVERS_FILE = 'app/config/sections/statusServers.json'
 
 async function verifyAdmin(username: string, password: string): Promise<boolean> {
   try {
-    const raw = await fs.readFile(ADMINS_PATH, 'utf-8')
-    const data = JSON.parse(raw)
-    const admins: AdminEntry[] = data.admins ?? []
-    return admins.some((a) => a.username === username && a.password === password)
-  } catch {
-    return false
-  }
+    const data = await dbGet<{ admins: AdminEntry[] }>(ADMINS_KEY, ADMINS_FILE)
+    return (data?.admins ?? []).some(
+      (a) => a.username === username && a.password === password
+    )
+  } catch { return false }
 }
 
 async function readData() {
-  const raw = await fs.readFile(SERVERS_PATH, 'utf-8')
-  return JSON.parse(raw)
+  const data = await dbGet<{ servers: unknown[]; categories: unknown[] }>(SERVERS_KEY, SERVERS_FILE)
+  return data ?? { servers: [], categories: [] }
 }
 
 async function writeData(data: unknown) {
-  await fs.writeFile(SERVERS_PATH, JSON.stringify(data, null, 2), 'utf-8')
+  await dbSet(SERVERS_KEY, data, SERVERS_FILE)
 }
 
-// GET — public, returns servers + categories
+// GET — public
 export async function GET() {
   try {
     const data = await readData()
@@ -40,7 +36,7 @@ export async function GET() {
   }
 }
 
-// POST — add a server OR category (admin only)
+// POST — add server or category (admin only)
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
@@ -61,12 +57,11 @@ export async function POST(req: NextRequest) {
         description: description ? String(description).trim() : undefined,
       }
       data.categories = data.categories ?? []
-      data.categories.push(newCat)
+      ;(data.categories as unknown[]).push(newCat)
       await writeData(data)
       return NextResponse.json({ success: true, category: newCat })
     }
 
-    // Default: add server
     const { name, url, categoryId } = body
     if (!name || !url) {
       return NextResponse.json({ error: 'name and url are required' }, { status: 400 })
@@ -80,7 +75,7 @@ export async function POST(req: NextRequest) {
       addedAt: Date.now(),
       categoryId: categoryId ?? null,
     }
-    data.servers.push(newServer)
+    ;(data.servers as unknown[]).push(newServer)
     await writeData(data)
     return NextResponse.json({ success: true, server: newServer })
   } catch (err: unknown) {
@@ -88,7 +83,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// DELETE — remove a server or category (admin only)
+// DELETE — remove server or category (admin only)
 export async function DELETE(req: NextRequest) {
   try {
     const body = await req.json()
@@ -102,21 +97,19 @@ export async function DELETE(req: NextRequest) {
     const data = await readData()
 
     if (type === 'category') {
-      data.categories = (data.categories ?? []).filter((c: { id: string }) => c.id !== id)
-      // Unassign any servers from this category
-      data.servers = data.servers.map((s: { categoryId?: string }) =>
+      data.categories = (data.categories as { id: string }[]).filter((c) => c.id !== id)
+      data.servers = (data.servers as { categoryId?: string }[]).map((s) =>
         s.categoryId === id ? { ...s, categoryId: null } : s
       )
       await writeData(data)
       return NextResponse.json({ success: true })
     }
 
-    // Default: remove server
-    const target = data.servers.find((s: { id: string }) => s.id === id)
+    const servers = data.servers as { id: string; isPreset: boolean }[]
+    const target = servers.find((s) => s.id === id)
     if (!target) return NextResponse.json({ error: 'Server not found' }, { status: 404 })
     if (target.isPreset) return NextResponse.json({ error: 'Cannot remove preset servers' }, { status: 403 })
-
-    data.servers = data.servers.filter((s: { id: string }) => s.id !== id)
+    data.servers = servers.filter((s) => s.id !== id)
     await writeData(data)
     return NextResponse.json({ success: true })
   } catch (err: unknown) {
@@ -124,7 +117,7 @@ export async function DELETE(req: NextRequest) {
   }
 }
 
-// PATCH — update admin users list OR rename a category (admin only)
+// PATCH — update admins list or rename category (admin only)
 export async function PATCH(req: NextRequest) {
   try {
     const body = await req.json()
@@ -138,14 +131,13 @@ export async function PATCH(req: NextRequest) {
       const { id, name, description } = body
       if (!id || !name) return NextResponse.json({ error: 'id and name required' }, { status: 400 })
       const data = await readData()
-      data.categories = (data.categories ?? []).map((c: { id: string; name: string; description?: string }) =>
+      data.categories = (data.categories as { id: string; name: string; description?: string }[]).map((c) =>
         c.id === id ? { ...c, name: String(name).trim(), description: description ?? c.description } : c
       )
       await writeData(data)
       return NextResponse.json({ success: true })
     }
 
-    // Default: update admin users
     const { admins } = body
     if (!Array.isArray(admins)) {
       return NextResponse.json({ error: 'admins must be an array' }, { status: 400 })
@@ -161,7 +153,7 @@ export async function PATCH(req: NextRequest) {
     if (validAdmins.length === 0) {
       return NextResponse.json({ error: 'At least one valid admin is required' }, { status: 400 })
     }
-    await fs.writeFile(ADMINS_PATH, JSON.stringify({ admins: validAdmins }, null, 2), 'utf-8')
+    await dbSet(ADMINS_KEY, { admins: validAdmins }, ADMINS_FILE)
     return NextResponse.json({ success: true })
   } catch (err: unknown) {
     return NextResponse.json({ error: err instanceof Error ? err.message : 'Server error' }, { status: 500 })

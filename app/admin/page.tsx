@@ -98,10 +98,10 @@ export default function AdminPage() {
     e.preventDefault()
     setAuthLoading(true); setAuthError('')
     try {
-      const res = await fetch('/api/admin/status-servers', {
-        method: 'PATCH',
+      const res = await fetch('/api/admin/auth', {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password, admins: [{ username, password }] }),
+        body: JSON.stringify({ username, password }),
       })
       if (res.ok) {
         setIsAuth(true)

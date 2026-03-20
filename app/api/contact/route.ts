@@ -1,32 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { promises as fs } from 'fs'
-import path from 'path'
+import { dbGet, dbSet } from '@/lib/db'
 
-const MESSAGES_PATH = path.join(process.cwd(), 'app', 'config', 'contact-messages.json')
-const ADMINS_PATH = path.join(process.cwd(), 'app', 'config', 'sections', 'statusAdmins.json')
+const ADMINS_KEY = 'admins'
+const ADMINS_FILE = 'app/config/sections/statusAdmins.json'
+const MESSAGES_KEY = 'contact_messages'
+const MESSAGES_FILE = 'app/config/contact-messages.json'
 
 async function verifyAdmin(username: string, password: string): Promise<boolean> {
   try {
-    const raw = await fs.readFile(ADMINS_PATH, 'utf-8')
-    const data = JSON.parse(raw)
-    return (data.admins ?? []).some(
-      (a: { username: string; password: string }) =>
-        a.username === username && a.password === password
+    const data = await dbGet<{ admins: { username: string; password: string }[] }>(ADMINS_KEY, ADMINS_FILE)
+    return (data?.admins ?? []).some(
+      (a) => a.username === username && a.password === password
     )
   } catch { return false }
 }
 
 async function readMessages() {
-  try {
-    const raw = await fs.readFile(MESSAGES_PATH, 'utf-8')
-    return JSON.parse(raw)
-  } catch {
-    return { messages: [] }
-  }
+  const data = await dbGet<{ messages: unknown[] }>(MESSAGES_KEY, MESSAGES_FILE)
+  return data ?? { messages: [] }
 }
 
 async function writeMessages(data: unknown) {
-  await fs.writeFile(MESSAGES_PATH, JSON.stringify(data, null, 2), 'utf-8')
+  await dbSet(MESSAGES_KEY, data, MESSAGES_FILE)
 }
 
 // POST — public, submit a contact message
@@ -50,16 +45,15 @@ export async function POST(req: NextRequest) {
     }
 
     const data = await readMessages()
-    data.messages.unshift(newMessage)
+    ;(data.messages as unknown[]).unshift(newMessage)
     await writeMessages(data)
-
     return NextResponse.json({ success: true })
   } catch (err: unknown) {
     return NextResponse.json({ error: err instanceof Error ? err.message : 'Server error' }, { status: 500 })
   }
 }
 
-// GET — admin only, returns all messages
+// GET — admin only
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const username = searchParams.get('username') ?? ''
@@ -73,7 +67,7 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(data)
 }
 
-// PATCH — admin only, mark message as read/unread or bulk mark-all-read
+// PATCH — mark read/unread or mark all read (admin only)
 export async function PATCH(req: NextRequest) {
   try {
     const body = await req.json()
@@ -84,13 +78,14 @@ export async function PATCH(req: NextRequest) {
     }
 
     const data = await readMessages()
+    const messages = data.messages as { id: string; read: boolean }[]
 
     if (markAllRead) {
-      data.messages = data.messages.map((m: { read: boolean }) => ({ ...m, read: true }))
+      data.messages = messages.map((m) => ({ ...m, read: true }))
     } else {
-      const idx = data.messages.findIndex((m: { id: string }) => m.id === id)
+      const idx = messages.findIndex((m) => m.id === id)
       if (idx === -1) return NextResponse.json({ error: 'Message not found' }, { status: 404 })
-      data.messages[idx].read = read ?? true
+      messages[idx].read = read ?? true
     }
 
     await writeMessages(data)
@@ -100,7 +95,7 @@ export async function PATCH(req: NextRequest) {
   }
 }
 
-// DELETE — admin only, delete a message
+// DELETE — remove message (admin only)
 export async function DELETE(req: NextRequest) {
   try {
     const body = await req.json()
@@ -111,10 +106,11 @@ export async function DELETE(req: NextRequest) {
     }
 
     const data = await readMessages()
-    const before = data.messages.length
-    data.messages = data.messages.filter((m: { id: string }) => m.id !== id)
+    const messages = data.messages as { id: string }[]
+    const before = messages.length
+    data.messages = messages.filter((m) => m.id !== id)
 
-    if (data.messages.length === before) {
+    if ((data.messages as unknown[]).length === before) {
       return NextResponse.json({ error: 'Message not found' }, { status: 404 })
     }
 

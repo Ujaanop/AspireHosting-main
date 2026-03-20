@@ -1,31 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { promises as fs } from 'fs'
-import path from 'path'
+import { dbGet, dbSet } from '@/lib/db'
 
-const BLOG_PATH = path.join(process.cwd(), 'app', 'config', 'blog.json')
-const ADMINS_PATH = path.join(process.cwd(), 'app', 'config', 'sections', 'statusAdmins.json')
+const ADMINS_KEY = 'admins'
+const ADMINS_FILE = 'app/config/sections/statusAdmins.json'
+const BLOG_KEY = 'blog'
+const BLOG_FILE = 'app/config/blog.json'
 
 async function verifyAdmin(username: string, password: string): Promise<boolean> {
   try {
-    const raw = await fs.readFile(ADMINS_PATH, 'utf-8')
-    const data = JSON.parse(raw)
-    return (data.admins ?? []).some(
-      (a: { username: string; password: string }) =>
-        a.username === username && a.password === password
+    const data = await dbGet<{ admins: { username: string; password: string }[] }>(ADMINS_KEY, ADMINS_FILE)
+    return (data?.admins ?? []).some(
+      (a) => a.username === username && a.password === password
     )
   } catch { return false }
 }
 
 async function readBlog() {
-  const raw = await fs.readFile(BLOG_PATH, 'utf-8')
-  return JSON.parse(raw)
+  const data = await dbGet<{ categories: unknown[]; posts: unknown[]; settings: unknown }>(BLOG_KEY, BLOG_FILE)
+  return data ?? { categories: [], posts: [], settings: {} }
 }
 
 async function writeBlog(data: unknown) {
-  await fs.writeFile(BLOG_PATH, JSON.stringify(data, null, 2), 'utf-8')
+  await dbSet(BLOG_KEY, data, BLOG_FILE)
 }
 
-// GET — public, returns posts + categories
+// GET — public
 export async function GET() {
   try {
     const data = await readBlog()
@@ -35,7 +34,7 @@ export async function GET() {
   }
 }
 
-// POST — add a new post (admin only)
+// POST — add post (admin only)
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
@@ -88,12 +87,12 @@ export async function POST(req: NextRequest) {
     }
 
     const data = await readBlog()
-    // Prevent duplicate slugs
-    if (data.posts.some((p: { slug: string }) => p.slug === slug)) {
+    const posts = data.posts as { slug: string; id: string }[]
+    if (posts.some((p) => p.slug === slug)) {
       newPost.id = `${slug}-${Date.now()}`
       newPost.slug = newPost.id
     }
-    data.posts.unshift(newPost)
+    posts.unshift(newPost)
     await writeBlog(data)
     return NextResponse.json({ success: true, post: newPost })
   } catch (err: unknown) {
@@ -101,7 +100,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// PATCH — update a post (admin only)
+// PATCH — update post (admin only)
 export async function PATCH(req: NextRequest) {
   try {
     const body = await req.json()
@@ -110,10 +109,10 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
     const data = await readBlog()
-    const idx = data.posts.findIndex((p: { id: string }) => p.id === id)
+    const posts = data.posts as { id: string }[]
+    const idx = posts.findIndex((p) => p.id === id)
     if (idx === -1) return NextResponse.json({ error: 'Post not found' }, { status: 404 })
-
-    data.posts[idx] = { ...data.posts[idx], ...updates, updatedAt: new Date().toISOString() }
+    posts[idx] = { ...posts[idx], ...updates, updatedAt: new Date().toISOString() }
     await writeBlog(data)
     return NextResponse.json({ success: true })
   } catch (err: unknown) {
@@ -121,7 +120,7 @@ export async function PATCH(req: NextRequest) {
   }
 }
 
-// DELETE — remove a post (admin only)
+// DELETE — remove post (admin only)
 export async function DELETE(req: NextRequest) {
   try {
     const body = await req.json()
@@ -130,9 +129,10 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
     const data = await readBlog()
-    const before = data.posts.length
-    data.posts = data.posts.filter((p: { id: string }) => p.id !== id)
-    if (data.posts.length === before) {
+    const posts = data.posts as { id: string }[]
+    const before = posts.length
+    data.posts = posts.filter((p) => p.id !== id)
+    if ((data.posts as unknown[]).length === before) {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 })
     }
     await writeBlog(data)
