@@ -29,6 +29,7 @@ import {
   Check,
   Building,
   Music,
+  Mail,
 } from 'lucide-react';
 import { FaDiscord } from "react-icons/fa6";
 import { GrServerCluster } from "react-icons/gr";
@@ -60,6 +61,7 @@ const iconMap: { [key: string]: React.ElementType } = {
   Sun,
   Building,
   Music,
+  Mail,
   FaDiscord,
   GrServerCluster,
 };

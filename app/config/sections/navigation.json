@@ -81,14 +81,14 @@
           "href": "/careers",
           "icon": "Users",
           "description": "Join our team"
-        },
-        {
-          "name": "Contact Us",
-          "href": "/contact",
-          "icon": "Mail",
-          "description": "Get in touch with our support team"
         }
       ]
+    },
+    {
+      "name": "Contact",
+      "href": "/contact",
+      "icon": "Mail",
+      "hasDropdown": false
     },
     {
       "name": "Legal",

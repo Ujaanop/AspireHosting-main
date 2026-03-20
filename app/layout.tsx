@@ -8,6 +8,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import { CurrencyProvider } from "./contexts/CurrencyContext";
 import CookieConsent from "./components/CookieConsent";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import MaintenancePopup from "./components/MaintenancePopup";
 import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
@@ -254,6 +255,7 @@ export default function RootLayout({
               </LayoutWrapper>
               <CookieConsent />
               <ThemeSwitcher />
+              <MaintenancePopup />
             </CurrencyProvider>
           </LanguageProvider>
         </ThemeProvider>

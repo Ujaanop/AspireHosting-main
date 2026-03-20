@@ -15,14 +15,23 @@ import {
   Users,
   // Messages icons
   Mail, MailOpen, Inbox,
+  // Maintenance icons
+  Wrench, CalendarClock, Clock,
 } from 'lucide-react'
 import type { StatusCategory, MonitoredServer } from '@/app/types/status'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Tab = 'status' | 'blog' | 'discounts' | 'admins' | 'messages'
+type Tab = 'status' | 'blog' | 'discounts' | 'admins' | 'messages' | 'maintenance'
 
 interface AdminUser { username: string; password: string }
+
+interface MaintenanceWindow {
+  id: string; title: string; description: string
+  startTime: string; endTime: string
+  affectedServices: string[]; type: 'maintenance' | 'outage' | 'partial_outage'
+  status: 'scheduled' | 'active' | 'completed'
+}
 interface BlogCategory { id: string; name: string; color: string }
 interface BlogPost { id: string; title: string; slug: string; category: string; published: boolean; featured: boolean; publishedAt: string }
 
@@ -400,6 +409,60 @@ export default function AdminPage() {
     if (res.ok) { setMessages(p => p.filter(m => m.id !== id)); showToast('Message deleted', 'success') }
   }
 
+  // ── Maintenance tab state ────────────────────────────────────────────────────
+
+  const [maintenanceWindows, setMaintenanceWindows] = useState<MaintenanceWindow[]>([])
+  const [maintLoading, setMaintLoading] = useState(false)
+  const [maintForm, setMaintForm] = useState({
+    title: '', description: '', startTime: '', endTime: '',
+    affectedServices: '', type: 'maintenance' as 'maintenance' | 'outage' | 'partial_outage',
+  })
+  const [savingMaint, setSavingMaint] = useState(false)
+
+  useEffect(() => {
+    if (!isAuth || activeTab !== 'maintenance') return
+    setMaintLoading(true)
+    fetch('/api/admin/maintenance')
+      .then(r => r.json())
+      .then(d => setMaintenanceWindows(d.windows ?? []))
+      .catch(() => {})
+      .finally(() => setMaintLoading(false))
+  }, [isAuth, activeTab])
+
+  async function addMaintenance() {
+    const { title, startTime, endTime, description, affectedServices, type } = maintForm
+    if (!title || !startTime || !endTime) { showToast('Title, start and end time are required', 'error'); return }
+    setSavingMaint(true)
+    try {
+      const res = await fetch('/api/admin/maintenance', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username, password, title, description,
+          startTime: new Date(startTime).toISOString(),
+          endTime: new Date(endTime).toISOString(),
+          affectedServices: affectedServices.split(',').map(s => s.trim()).filter(Boolean),
+          type,
+        }),
+      })
+      const data = await res.json()
+      if (res.ok) {
+        setMaintenanceWindows(p => [data.window, ...p])
+        setMaintForm({ title: '', description: '', startTime: '', endTime: '', affectedServices: '', type: 'maintenance' })
+        showToast('Maintenance window created', 'success')
+      } else showToast(data.error ?? 'Failed', 'error')
+    } catch { showToast('Network error', 'error') }
+    finally { setSavingMaint(false) }
+  }
+
+  async function deleteMaintenance(id: string) {
+    if (!confirm('Delete this maintenance window?')) return
+    const res = await fetch('/api/admin/maintenance', {
+      method: 'DELETE', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password, id }),
+    })
+    if (res.ok) { setMaintenanceWindows(p => p.filter(w => w.id !== id)); showToast('Deleted', 'success') }
+  }
+
   // ── Login screen ────────────────────────────────────────────────────────────
 
   if (!isAuth) {
@@ -461,6 +524,7 @@ export default function AdminPage() {
     { id: 'blog', label: 'Blog', icon: <BookOpen className="w-4 h-4" /> },
     { id: 'discounts', label: 'Discounts', icon: <Tag className="w-4 h-4" /> },
     { id: 'messages', label: 'Messages', icon: <Inbox className="w-4 h-4" />, badge: unreadCount },
+    { id: 'maintenance', label: 'Maintenance', icon: <Wrench className="w-4 h-4" /> },
     { id: 'admins', label: 'Admin Users', icon: <Users className="w-4 h-4" /> },
   ]
 
@@ -960,6 +1024,124 @@ export default function AdminPage() {
                     )}
                   </div>
                 ))}
+              </div>
+            )}
+          </motion.div>
+        )}
+
+        {/* ══ MAINTENANCE TAB ═════════════════════════════════════════════════ */}
+        {activeTab === 'maintenance' && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
+            <h2 className="text-base font-semibold text-gray-900 dark:text-white">Schedule Maintenance</h2>
+
+            {/* Add form */}
+            <div className="card-primary rounded-xl border border-secondary p-5 space-y-4">
+              <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+                <CalendarClock className="w-4 h-4 icon-text-primary" />New Maintenance Window
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="sm:col-span-2">
+                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Title *</label>
+                  <input value={maintForm.title} onChange={e => setMaintForm(p => ({ ...p, title: e.target.value }))}
+                    placeholder="e.g. Scheduled maintenance on Game Servers"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-secondary bg-white dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-button-bg/50" />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+                  <textarea value={maintForm.description} onChange={e => setMaintForm(p => ({ ...p, description: e.target.value }))}
+                    placeholder="Brief description of what will happen during this window…"
+                    rows={2}
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-secondary bg-white dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-button-bg/50 resize-none" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Start Date &amp; Time *</label>
+                  <input type="datetime-local" value={maintForm.startTime} onChange={e => setMaintForm(p => ({ ...p, startTime: e.target.value }))}
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-secondary bg-white dark:bg-white/5 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-button-bg/50" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">End Date &amp; Time *</label>
+                  <input type="datetime-local" value={maintForm.endTime} onChange={e => setMaintForm(p => ({ ...p, endTime: e.target.value }))}
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-secondary bg-white dark:bg-white/5 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-button-bg/50" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Type</label>
+                  <select value={maintForm.type} onChange={e => setMaintForm(p => ({ ...p, type: e.target.value as 'maintenance' | 'outage' | 'partial_outage' }))}
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-secondary bg-white dark:bg-white/5 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-button-bg/50">
+                    <option value="maintenance">Maintenance</option>
+                    <option value="partial_outage">Partial Outage</option>
+                    <option value="outage">Outage</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Affected Services <span className="text-gray-400">(comma separated)</span></label>
+                  <input value={maintForm.affectedServices} onChange={e => setMaintForm(p => ({ ...p, affectedServices: e.target.value }))}
+                    placeholder="e.g. Game Servers, Cloud VPS"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-secondary bg-white dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-button-bg/50" />
+                </div>
+              </div>
+              <button onClick={addMaintenance} disabled={savingMaint}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg button-primary text-white text-sm font-medium disabled:opacity-60">
+                {savingMaint ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
+                Schedule Window
+              </button>
+            </div>
+
+            {/* List */}
+            {maintLoading ? (
+              <div className="text-center py-10 text-gray-400"><RefreshCw className="w-5 h-5 animate-spin mx-auto mb-2" /><p className="text-sm">Loading…</p></div>
+            ) : maintenanceWindows.length === 0 ? (
+              <div className="text-center py-14 text-gray-400">
+                <Wrench className="w-10 h-10 mx-auto mb-3 opacity-30" />
+                <p className="text-sm font-medium">No maintenance windows</p>
+                <p className="text-xs mt-1 opacity-70">Scheduled windows will appear here</p>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-3">
+                {maintenanceWindows.map(win => {
+                  const statusColors = {
+                    scheduled: 'bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400',
+                    active: 'bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400',
+                    completed: 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400',
+                  }
+                  const typeColors = {
+                    maintenance: 'text-amber-600 dark:text-amber-400',
+                    outage: 'text-red-600 dark:text-red-400',
+                    partial_outage: 'text-orange-600 dark:text-orange-400',
+                  }
+                  const typeLabels = { maintenance: 'Maintenance', outage: 'Outage', partial_outage: 'Partial Outage' }
+                  return (
+                    <div key={win.id} className="card-primary rounded-xl border border-secondary p-4 flex items-start gap-4">
+                      <div className="flex-shrink-0 mt-1">
+                        <Wrench className={`w-5 h-5 ${typeColors[win.type]}`} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap mb-1">
+                          <span className="text-sm font-semibold text-gray-900 dark:text-white">{win.title}</span>
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold capitalize ${statusColors[win.status]}`}>
+                            {win.status}
+                          </span>
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold bg-gray-100 dark:bg-white/10 ${typeColors[win.type]}`}>
+                            {typeLabels[win.type]}
+                          </span>
+                        </div>
+                        {win.description && <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{win.description}</p>}
+                        <div className="flex flex-wrap gap-x-4 gap-y-0.5 text-xs text-gray-400 dark:text-gray-500">
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {new Date(win.startTime).toLocaleString()} → {new Date(win.endTime).toLocaleString()}
+                          </span>
+                          {win.affectedServices.length > 0 && (
+                            <span>Affected: {win.affectedServices.join(', ')}</span>
+                          )}
+                        </div>
+                      </div>
+                      <button onClick={() => deleteMaintenance(win.id)}
+                        className="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-400 hover:text-red-500 flex-shrink-0 transition-colors">
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  )
+                })}
               </div>
             )}
           </motion.div>

@@ -7,6 +7,7 @@ import { Mail, Phone, Gamepad2, ExternalLink, Linkedin, Youtube, Instagram } fro
 import { FaAddressBook, FaDiscord } from "react-icons/fa6"
 import DiscordBanner from "./DiscordBanner"
 import { useLanguage } from "../contexts/LanguageContext"
+import FooterStatus from "./FooterStatus"
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -208,10 +209,7 @@ export default function Footer() {
               © {new Date().getFullYear()} AspireHosting. All rights reserved.
             </div>
             <div className="flex items-center space-x-6">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <a href="https://aspirehosting.instatus.com/" className="text-gray-600 dark:text-gray-400 text-sm">{t('footer.systemsOperational')}</a>
-              </div>
+              <FooterStatus />
             </div>
           </div>
         </motion.div>
