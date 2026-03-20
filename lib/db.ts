@@ -1,22 +1,22 @@
 /**
  * db.ts — unified storage abstraction
  *
- * • On Vercel (KV_REST_API_URL is set) → uses @vercel/kv (Redis)
- * • Locally (no KV env)               → falls back to JSON files on disk
+ * • On Vercel (Upstash Redis env vars set) → uses @upstash/redis
+ * • Locally (no Redis env vars)            → falls back to JSON files on disk
  *
- * This means local dev keeps working with zero extra setup, and
- * production on Vercel uses persistent KV storage.
+ * Supports both old KV_REST_API_* and new UPSTASH_REDIS_REST_* variable names.
  */
 
 import { promises as fs } from 'fs'
 import path from 'path'
 
-const USE_KV = !!process.env.KV_REST_API_URL
+const REDIS_URL = process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL
+const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN
+const USE_REDIS = !!(REDIS_URL && REDIS_TOKEN)
 
-// Lazy-load kv so it doesn't crash in local dev where the env vars aren't set
-async function getKv() {
-  const { kv } = await import('@vercel/kv')
-  return kv
+async function getRedis() {
+  const { Redis } = await import('@upstash/redis')
+  return new Redis({ url: REDIS_URL!, token: REDIS_TOKEN! })
 }
 
 function filePath(relativePath: string) {
@@ -24,9 +24,9 @@ function filePath(relativePath: string) {
 }
 
 export async function dbGet<T>(key: string, fallbackFile: string): Promise<T | null> {
-  if (USE_KV) {
-    const kv = await getKv()
-    return kv.get<T>(key)
+  if (USE_REDIS) {
+    const redis = await getRedis()
+    return redis.get<T>(key)
   }
   try {
     const raw = await fs.readFile(filePath(fallbackFile), 'utf-8')
@@ -37,9 +37,9 @@ export async function dbGet<T>(key: string, fallbackFile: string): Promise<T | n
 }
 
 export async function dbSet(key: string, value: unknown, fallbackFile: string): Promise<void> {
-  if (USE_KV) {
-    const kv = await getKv()
-    await kv.set(key, value)
+  if (USE_REDIS) {
+    const redis = await getRedis()
+    await redis.set(key, value)
     return
   }
   await fs.writeFile(filePath(fallbackFile), JSON.stringify(value, null, 2), 'utf-8')

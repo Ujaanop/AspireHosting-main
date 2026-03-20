@@ -1,21 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { dbGet, dbSet } from '@/lib/db'
+import { verifyAdmin } from '@/lib/verifyAdmin'
 
 interface AdminEntry { username: string; password: string }
 
-const ADMINS_KEY = 'admins'
-const ADMINS_FILE = 'app/config/sections/statusAdmins.json'
 const SERVERS_KEY = 'status_servers'
 const SERVERS_FILE = 'app/config/sections/statusServers.json'
-
-async function verifyAdmin(username: string, password: string): Promise<boolean> {
-  try {
-    const data = await dbGet<{ admins: AdminEntry[] }>(ADMINS_KEY, ADMINS_FILE)
-    return (data?.admins ?? []).some(
-      (a) => a.username === username && a.password === password
-    )
-  } catch { return false }
-}
+const ADMINS_KEY = 'admins'
+const ADMINS_FILE = 'app/config/sections/statusAdmins.json'
 
 async function readData() {
   const data = await dbGet<{ servers: unknown[]; categories: unknown[] }>(SERVERS_KEY, SERVERS_FILE)

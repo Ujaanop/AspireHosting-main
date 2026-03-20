@@ -1,21 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { dbGet, dbSet } from '@/lib/db'
+import { verifyAdmin } from '@/lib/verifyAdmin'
 
-const ADMINS_KEY = 'admins'
-const ADMINS_FILE = 'app/config/sections/statusAdmins.json'
 const DISCOUNTS_KEY = 'discounts'
 const DISCOUNTS_FILE = 'app/config/discounts.json'
 const BANNER_KEY = 'banner'
 const NAV_FILE = 'app/config/sections/navigation.json'
-
-async function verifyAdmin(username: string, password: string): Promise<boolean> {
-  try {
-    const data = await dbGet<{ admins: { username: string; password: string }[] }>(ADMINS_KEY, ADMINS_FILE)
-    return (data?.admins ?? []).some(
-      (a) => a.username === username && a.password === password
-    )
-  } catch { return false }
-}
 
 // GET — public, returns discounts config + banner
 export async function GET() {
@@ -47,7 +37,7 @@ export async function PATCH(req: NextRequest) {
     }
 
     if (banner !== undefined) {
-      if (process.env.KV_REST_API_URL) {
+      if (process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL) {
         // On KV: store banner directly
         const existing = await dbGet<Record<string, unknown>>(BANNER_KEY, NAV_FILE) ?? {}
         await dbSet(BANNER_KEY, { ...existing, ...banner }, NAV_FILE)

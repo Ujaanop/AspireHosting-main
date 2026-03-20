@@ -25,7 +25,7 @@ async function readJson(filePath: string) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!process.env.KV_REST_API_URL) {
+  if (!(process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL)) {
     return NextResponse.json({ error: 'KV not configured — nothing to seed' }, { status: 400 })
   }
 
@@ -43,7 +43,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { kv } = await import('@vercel/kv')
+    const { Redis } = await import('@upstash/redis')
+    const kv = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL!,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN!,
+    })
 
     const seeds: { key: string; data: unknown }[] = [
       { key: 'admins', data: adminsData },
