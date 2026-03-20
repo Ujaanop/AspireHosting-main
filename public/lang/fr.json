@@ -11,6 +11,12 @@
     "clientSpace": "ESPACE CLIENT",
     "termsOfService": "Conditions de Service",
     "privacyPolicy": "Politique de Confidentialité",
+    "company": "Entreprise",
+    "blog": "Blog",
+    "blogDescription": "Dernières nouvelles, tutoriels et mises à jour",
+    "aboutUsDescription": "En savoir plus sur notre entreprise",
+    "careersDescription": "Rejoignez notre équipe",
+    "services": "Services",
     "termsDescription": "Notre accord de service et conditions",
     "privacyDescription": "Comment nous protégeons votre vie privée"
   },

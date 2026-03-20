@@ -11,6 +11,12 @@
     "clientSpace": "KUNDENBEREICH",
     "termsOfService": "Nutzungsbedingungen",
     "privacyPolicy": "Datenschutzrichtlinie",
+    "company": "Unternehmen",
+    "blog": "Blog",
+    "blogDescription": "Neueste Nachrichten, Tutorials und Updates",
+    "aboutUsDescription": "Erfahren Sie mehr über unser Unternehmen",
+    "careersDescription": "Werden Sie Teil unseres Teams",
+    "services": "Dienste",
     "termsDescription": "Unsere Servicevereinbarung und Bedingungen",
     "privacyDescription": "Wie wir Ihre Privatsphäre schützen"
   },

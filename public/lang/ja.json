@@ -11,6 +11,12 @@
     "clientSpace": "クライアントスペース",
     "termsOfService": "利用規約",
     "privacyPolicy": "プライバシーポリシー",
+    "company": "会社",
+    "blog": "ブログ",
+    "blogDescription": "最新ニュース、チュートリアル、アップデート",
+    "aboutUsDescription": "当社についてもっと詳しく",
+    "careersDescription": "チームに参加する",
+    "services": "サービス",
     "termsDescription": "当社のサービス契約と条件",
     "privacyDescription": "お客様のプライバシーを保護する方法"
   },

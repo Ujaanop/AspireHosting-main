@@ -30,14 +30,14 @@
           "href": "/webhosting",
           "icon": "Globe",
           "description": "Fast and reliable web hosting solutions"
+        },
+        {
+          "name": "Discord Bot",
+          "href": "/discord",
+          "icon": "FaDiscord",
+          "description": "24/7 Discord bot hosting with Node.js support"
         }
       ]
-    },
-    {
-      "name": "Discord",
-      "href": "/discord",
-      "icon": "FaDiscord",
-      "hasDropdown": false
     },
     {
       "name": "Company Info",
@@ -66,9 +66,9 @@
         },
         {
           "name": "Status Page",
-          "href": "https://aspirehosting.instatus.com/",
+          "href": "/status",
           "icon": "Globe",
-          "description": "Our Status Page"
+          "description": "Real-time service health and uptime"
         },
         {
           "name": "Trustpilot",
@@ -81,6 +81,12 @@
           "href": "/careers",
           "icon": "Users",
           "description": "Join our team"
+        },
+        {
+          "name": "Contact Us",
+          "href": "/contact",
+          "icon": "Mail",
+          "description": "Get in touch with our support team"
         }
       ]
     },
@@ -144,8 +150,8 @@
   },
   "banner": {
     "show": true,
-    "text": "26% OFF now on all Plans for New Year! Use code: NEWYEAR26",
-    "couponCode": "NEWYEAR26",
+    "text": "30% ARYAN NIGGA",
+    "couponCode": "ARYAN NIGGA",
     "useThemeColor": true,
     "backgroundColor": "bg-orange-400",
     "fallbackColor": "bg-orange-400"

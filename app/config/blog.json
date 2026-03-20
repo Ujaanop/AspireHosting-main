@@ -42,17 +42,27 @@
         "avatar": "/authors/aspire-team.jpg"
       },
       "category": "announcements",
-      "tags": ["aspire", "blog", "welcome", "announcement"],
+      "tags": [
+        "aspire",
+        "blog",
+        "welcome",
+        "announcement"
+      ],
       "featured": true,
       "published": true,
       "publishedAt": "2025-03-01T09:00:00Z",
-      "updatedAt": "2025-03-01T09:00:00Z",
+      "updatedAt": "2026-03-20T06:38:28.702Z",
       "readTime": "3 min read",
       "image": "/blog/server.webp",
       "seo": {
         "title": "Welcome to the Aspire Blog — Aspire Hosting",
         "description": "Introducing the official Aspire Hosting blog — guides, infrastructure deep-dives, product updates, and more.",
-        "keywords": ["aspire hosting", "blog launch", "hosting news", "web hosting"]
+        "keywords": [
+          "aspire hosting",
+          "blog launch",
+          "hosting news",
+          "web hosting"
+        ]
       }
     },
     {
@@ -67,17 +77,27 @@
         "avatar": "/authors/infra-team.jpg"
       },
       "category": "technology",
-      "tags": ["uptime", "sla", "infrastructure", "reliability"],
+      "tags": [
+        "uptime",
+        "sla",
+        "infrastructure",
+        "reliability"
+      ],
       "featured": false,
       "published": true,
       "publishedAt": "2025-03-05T10:00:00Z",
-      "updatedAt": "2025-03-05T10:00:00Z",
+      "updatedAt": "2026-03-20T06:38:34.153Z",
       "readTime": "5 min read",
       "image": "/blog/vps-locations-2024.jpg",
       "seo": {
         "title": "What 99.9% Uptime Actually Means — Aspire Hosting",
         "description": "A plain-English breakdown of hosting uptime SLAs, what counts as downtime, and how to hold a provider accountable.",
-        "keywords": ["uptime sla", "hosting reliability", "99.9% uptime", "server downtime"]
+        "keywords": [
+          "uptime sla",
+          "hosting reliability",
+          "99.9% uptime",
+          "server downtime"
+        ]
       }
     },
     {
@@ -92,17 +112,28 @@
         "avatar": "/authors/support-team.jpg"
       },
       "category": "tutorials",
-      "tags": ["vps", "shared-hosting", "dedicated", "guide", "beginner"],
+      "tags": [
+        "vps",
+        "shared-hosting",
+        "dedicated",
+        "guide",
+        "beginner"
+      ],
       "featured": false,
       "published": true,
       "publishedAt": "2025-03-10T11:00:00Z",
-      "updatedAt": "2025-03-10T11:00:00Z",
+      "updatedAt": "2026-03-20T06:38:34.683Z",
       "readTime": "6 min read",
       "image": "/blog/minecraft-server-setup.jpg",
       "seo": {
         "title": "How to Choose the Right Hosting Plan — Aspire Hosting",
         "description": "A practical guide to choosing between shared, VPS, and dedicated hosting without the marketing spin.",
-        "keywords": ["hosting plans", "vps vs shared", "dedicated server", "hosting guide"]
+        "keywords": [
+          "hosting plans",
+          "vps vs shared",
+          "dedicated server",
+          "hosting guide"
+        ]
       }
     },
     {
@@ -117,17 +148,28 @@
         "avatar": "/authors/infra-team.jpg"
       },
       "category": "hosting-news",
-      "tags": ["gaming", "latency", "ping", "game-servers", "performance"],
+      "tags": [
+        "gaming",
+        "latency",
+        "ping",
+        "game-servers",
+        "performance"
+      ],
       "featured": false,
       "published": true,
       "publishedAt": "2025-03-15T09:30:00Z",
-      "updatedAt": "2025-03-15T09:30:00Z",
+      "updatedAt": "2026-03-20T06:38:35.193Z",
       "readTime": "5 min read",
       "image": "/blog/discord.jpg",
       "seo": {
         "title": "Why Low-Latency Hosting Matters for Online Gaming — Aspire Hosting",
         "description": "A technical guide to understanding and reducing server latency for game hosting — location selection, tick rate, and optimisation.",
-        "keywords": ["game server latency", "low ping hosting", "minecraft server performance", "game hosting"]
+        "keywords": [
+          "game server latency",
+          "low ping hosting",
+          "minecraft server performance",
+          "game hosting"
+        ]
       }
     }
   ],

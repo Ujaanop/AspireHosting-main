@@ -11,6 +11,12 @@
     "clientSpace": "КЛИЕНТСКАЯ ЗОНА",
     "termsOfService": "Условия обслуживания",
     "privacyPolicy": "Политика конфиденциальности",
+    "company": "Компания",
+    "blog": "Блог",
+    "blogDescription": "Последние новости, уроки и обновления",
+    "aboutUsDescription": "Узнайте больше о нашей компании",
+    "careersDescription": "Присоединяйтесь к нашей команде",
+    "services": "Услуги",
     "termsDescription": "Наше соглашение об обслуживании и условия",
     "privacyDescription": "Как мы защищаем вашу конфиденциальность"
   },

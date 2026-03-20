@@ -404,7 +404,7 @@ const Navbar: React.FC = () => {
       : pathname === item.href;
     const translatedName = getTranslatedNavName(item.name);
 
-    const navLinkClass = `px-4 py-6 text-sm font-medium relative text-gray-700 dark:text-slate-200 hover:text-icon-text-primary dark:hover:text-icon-text-primary transition-colors flex items-center space-x-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-button-bg dark:after:bg-button-bg after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center hover:hover-gradient${isActive ? ' text-icon-text-primary dark:text-icon-text-primary after:scale-x-100 hover-gradient' : ''}`;
+    const navLinkClass = `px-4 py-6 text-sm font-bold relative text-gray-700 dark:text-slate-200 hover:text-icon-text-primary dark:hover:text-icon-text-primary transition-colors flex items-center space-x-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-button-bg dark:after:bg-button-bg after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-center hover:hover-gradient${isActive ? ' text-icon-text-primary dark:text-icon-text-primary after:scale-x-100 hover-gradient' : ''}`;
 
     if (item.hasDropdown) {
       return (

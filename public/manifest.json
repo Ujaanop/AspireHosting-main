@@ -1,8 +1,10 @@
 {
+  "id": "/",
   "name": "Aspire Hosting - Game Hosting, VPS & Dedicated Servers",
   "short_name": "Aspire Hosting",
-  "description": "Premium game hosting, VPS & dedicated server solutions",
+  "description": "High-performance game hosting, VPS, and dedicated servers with global locations and 24/7 support.",
   "start_url": "/",
+  "display_override": ["standalone", "minimal-ui", "browser"],
   "display": "standalone",
   "background_color": "#1e3a8a",
   "theme_color": "#1e40af",
@@ -10,7 +12,10 @@
   "scope": "/",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["games", "productivity", "utilities", "vps", "dedicated", "cloud", "gaming", "server", "hosting"],
+  "categories": ["games", "minecraft", "vps", "dedicated", "cloud", "gaming", "server", "hosting", "premium hosting"],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
   "icons": [
     {
       "src": "https://us-east-1.tixte.net/uploads/shriy1556k.discowd.com/aspirehsoting.png",
@@ -61,7 +66,8 @@
       "icons": [
         {
           "src": "https://us-east-1.tixte.net/uploads/shriy1556k.discowd.com/aspirehsoting.png",
-          "sizes": "96x96"
+          "sizes": "96x96",
+          "type": "image/png"
         }
       ]
     },
@@ -73,19 +79,34 @@
       "icons": [
         {
           "src": "https://us-east-1.tixte.net/uploads/shriy1556k.discowd.com/aspirehsoting.png",
-          "sizes": "96x96"
+          "sizes": "96x96",
+          "type": "image/png"
         }
       ]
     },
     {
-      "name": "Support",
-      "short_name": "Help",
-      "description": "Get help and support",
-      "url": "/support",
+      "name": "Server Status",
+      "short_name": "Status",
+      "description": "Check service uptime and incidents",
+      "url": "/status",
       "icons": [
         {
           "src": "https://us-east-1.tixte.net/uploads/shriy1556k.discowd.com/aspirehsoting.png",
-          "sizes": "96x96"
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Terms of Service",
+      "short_name": "Terms",
+      "description": "Read our terms of service",
+      "url": "/terms-of-services",
+      "icons": [
+        {
+          "src": "https://us-east-1.tixte.net/uploads/shriy1556k.discowd.com/aspirehsoting.png",
+          "sizes": "96x96",
+          "type": "image/png"
         }
       ]
     }

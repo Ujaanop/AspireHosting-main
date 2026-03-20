@@ -11,6 +11,12 @@
     "clientSpace": "منطقة العميل",
     "termsOfService": "شروط الخدمة",
     "privacyPolicy": "سياسة الخصوصية",
+    "company": "الشركة",
+    "blog": "المدونة",
+    "blogDescription": "أحدث الأخبار والبرامج التعليمية والتحديثات",
+    "aboutUsDescription": "تعرف على المزيد عن شركتنا",
+    "careersDescription": "انضم إلى فريقنا",
+    "services": "الخدمات",
     "termsDescription": "اتفاقية الخدمة وشروطنا",
     "privacyDescription": "كيف نحمي خصوصيتك"
   },

@@ -1,0 +1,62 @@
+{
+  "categories": [
+    {
+      "id": "websites",
+      "name": "Websites",
+      "description": "Public-facing websites and portals"
+    },
+    {
+      "id": "game-nodes",
+      "name": "Game Nodes",
+      "description": "Game server hosting nodes"
+    },
+    {
+      "id": "dedicated",
+      "name": "Dedicated Hypervisors",
+      "description": "Bare metal and dedicated server infrastructure"
+    },
+    {
+      "id": "infrastructure",
+      "name": "Infrastructure",
+      "description": "Core network and platform services"
+    }
+  ],
+  "servers": [
+    {
+      "id": "preset-main",
+      "name": "AspireHosting",
+      "url": "aspirehosting.net",
+      "type": "http",
+      "isPreset": true,
+      "addedAt": 0,
+      "categoryId": "websites"
+    },
+    {
+      "id": "preset-billing",
+      "name": "Billing Portal",
+      "url": "billing.aspirehosting.net",
+      "type": "http",
+      "isPreset": true,
+      "addedAt": 0,
+      "categoryId": "websites"
+    },
+    {
+      "id": "custom-1773986443217",
+      "name": "Panel",
+      "url": "http://panel.aspirehosting.net/",
+      "type": "http",
+      "isPreset": false,
+      "addedAt": 1773986443217,
+      "categoryId": "websites"
+    },
+    {
+      "id": "custom-1773986490748",
+      "name": "US-Miami-Gold 6154",
+      "url": "23.153.72.154",
+      "type": "ip",
+      "isPreset": false,
+      "addedAt": 1773986490748,
+      "categoryId": "dedicated"
+    }
+  ]
+}

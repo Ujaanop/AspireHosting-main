@@ -11,6 +11,12 @@
     "clientSpace": "客户中心",
     "termsOfService": "服务条款",
     "privacyPolicy": "隐私政策",
+    "company": "公司",
+    "blog": "博客",
+    "blogDescription": "最新新闻、教程和更新",
+    "aboutUsDescription": "了解更多关于我们公司的信息",
+    "careersDescription": "加入我们的团队",
+    "services": "服务",
     "termsDescription": "我们的服务协议和条款",
     "privacyDescription": "我们如何保护您的隐私"
   },

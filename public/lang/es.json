@@ -11,6 +11,12 @@
     "clientSpace": "ÁREA DEL CLIENTE",
     "termsOfService": "Términos del Servicio",
     "privacyPolicy": "Política de Privacidad",
+    "company": "Empresa",
+    "blog": "Blog",
+    "blogDescription": "Últimas noticias, tutoriales y actualizaciones",
+    "aboutUsDescription": "Conoce más sobre nuestra empresa",
+    "careersDescription": "Únete a nuestro equipo",
+    "services": "Servicios",
     "termsDescription": "Nuestro acuerdo de servicio y términos",
     "privacyDescription": "Cómo protegemos tu privacidad"
   },
