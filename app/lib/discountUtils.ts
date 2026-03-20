@@ -1,22 +1,16 @@
 import discountConfig from "../config/discounts.json"
 import type { DiscountsConfig, CalculatedDiscount } from "../types/discounts"
 
-const config = discountConfig as DiscountsConfig
+const defaultConfig = discountConfig as DiscountsConfig
 
-/**
- * Calculate discount for a given product type and price
- * The input price is treated as the ORIGINAL price, and we calculate the discounted price
- * @param productType - The product type (vps, games, discord, webhosting, dedicated)
- * @param originalPrice - The original price (string or number)
- * @param currency - Optional currency symbol override
- * @param planType - Optional plan type ("budget" | "premium"). Defaults to "budget" if not provided
- */
 export function calculateDiscount(
   productType: string,
   originalPrice: string | number,
   currency?: string,
-  planType?: "budget" | "premium"
+  planType?: "budget" | "premium",
+  liveConfig?: DiscountsConfig
 ): CalculatedDiscount {
+  const config = liveConfig ?? defaultConfig
   const productDiscount = config.discounts[productType]
   
   if (!productDiscount || !productDiscount.enabled) {
@@ -96,7 +90,7 @@ function roundToNearest(value: number, nearest: number): number {
  * Check if discount is currently valid
  */
 export function isDiscountValid(productType: string): boolean {
-  const productDiscount = config.discounts[productType]
+  const productDiscount = defaultConfig.discounts[productType]
   
   if (!productDiscount || !productDiscount.enabled) {
     return false
@@ -113,26 +107,26 @@ export function isDiscountValid(productType: string): boolean {
  * Get discount configuration for a product type
  */
 export function getDiscountConfig(productType: string) {
-  return config.discounts[productType] || null
+  return defaultConfig.discounts[productType] || null
 }
 
 /**
  * Get global discount settings
  */
-export function getGlobalDiscountSettings() {
-  return config.globalSettings
+export function getGlobalDiscountSettings(liveConfig?: DiscountsConfig) {
+  return (liveConfig ?? defaultConfig).globalSettings
 }
 
 /**
  * Get all active discounts
  */
 export function getActiveDiscounts() {
-  return Object.entries(config.discounts)
-    .filter(([_, discount]) => discount.enabled && isDiscountValid(_))
+  return Object.entries(defaultConfig.discounts)
+    .filter(([key, discount]) => discount.enabled && isDiscountValid(key))
     .reduce((acc, [key, value]) => {
       acc[key] = value
       return acc
-    }, {} as Record<string, any>)
+    }, {} as Record<string, unknown>)
 }
 
 /**

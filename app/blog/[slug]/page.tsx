@@ -6,14 +6,8 @@ import { Calendar, Clock, Tag, ArrowLeft, Share2, ChevronRight, Copy, Check } fr
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import {
-  getPostBySlug,
-  getRelatedPosts,
-  getRecentPosts,
-  getAllCategories,
-  formatDate,
-} from "../../lib/blogUtils"
-import type { BlogPost } from "../../types/blog"
+import { formatDate } from "../../lib/blogUtils"
+import type { BlogPost, BlogCategory } from "../../types/blog"
 import Navbar from "../../components/Navbar"
 import Footer from "../../components/Footer"
 import BlogCard from "../../components/blog/BlogCard"
@@ -26,22 +20,28 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   const [post, setPost] = useState<BlogPost | null>(null)
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([])
   const [recentPosts, setRecentPosts] = useState<BlogPost[]>([])
+  const [categories, setCategories] = useState<BlogCategory[]>([])
   const [copied, setCopied] = useState(false)
+  const [notFoundError, setNotFoundError] = useState(false)
 
   useEffect(() => {
     const loadPost = async () => {
       const { slug } = await params
-      const foundPost = getPostBySlug(slug)
-      if (!foundPost) {
-        notFound()
-        return
-      }
+      const res = await fetch('/api/admin/blog')
+      const data = await res.json()
+      const allPosts: BlogPost[] = (data.posts ?? []).filter((p: BlogPost) => p.published)
+      setCategories(data.categories ?? [])
+      const foundPost = allPosts.find(p => p.slug === slug) ?? null
+      if (!foundPost) { setNotFoundError(true); return }
       setPost(foundPost)
-      setRelatedPosts(getRelatedPosts(foundPost, 3))
-      setRecentPosts(getRecentPosts(4))
+      const related = allPosts.filter(p => p.id !== foundPost.id && (p.category === foundPost.category || p.tags.some(t => foundPost.tags.includes(t)))).slice(0, 3)
+      setRelatedPosts(related)
+      setRecentPosts(allPosts.slice(0, 4))
     }
     loadPost()
   }, [params])
+
+  if (notFoundError) { notFound() }
 
   if (!post) {
     return (
@@ -51,7 +51,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     )
   }
 
-  const categories = getAllCategories()
   const category = categories.find((c) => c.id === post.category)
 
   const getCategoryBg = (categoryId: string) => {

@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { calculateDiscount, getGlobalDiscountSettings } from "../../lib/discountUtils"
 import { calculatePriceAdjustment } from "../../lib/priceAdjustmentUtils"
 import { useCurrency } from "../../contexts/CurrencyContext"
+import { useDiscounts } from "../../contexts/DiscountsContext"
 import type { CalculatedDiscount } from "../../types/discounts"
 
 interface DiscountedPriceProps {
@@ -47,7 +48,8 @@ export function DiscountedPrice({
   showDiscountType = false
 }: DiscountedPriceProps) {
   const { convertPrice, selectedCurrency, exchangeRates } = useCurrency()
-  
+  const { config: liveDiscounts } = useDiscounts()
+
   // Extract numeric price from input (handles strings like "$5.99" or numbers)
   const extractNumeric = (val: string | number): number => {
     if (typeof val === 'number') return val
@@ -87,9 +89,9 @@ export function DiscountedPrice({
   
   // Step 5: Apply discount to the adjusted price
   // Pass selected currency symbol so formatting is correct
-  const discount = calculateDiscount(productType, adjustedNumericPrice, selectedCurrency.symbol, planType)
-  
-  const globalSettings = getGlobalDiscountSettings()
+  const discount = calculateDiscount(productType, adjustedNumericPrice, selectedCurrency.symbol, planType, liveDiscounts)
+
+  const globalSettings = getGlobalDiscountSettings(liveDiscounts)
   
   // Use adjusted price as the "original" price for discount display
   const originalPriceForDisplay = priceAdjustment.isAdjusted 
@@ -202,7 +204,8 @@ export function DiscountedPriceHorizontal({
   showDiscountType = false
 }: DiscountedPriceProps) {
   const { selectedCurrency, exchangeRates } = useCurrency()
-  
+  const { config: liveDiscounts } = useDiscounts()
+
   // Extract numeric price from input
   const extractNumeric = (val: string | number): number => {
     if (typeof val === 'number') return val
@@ -236,9 +239,9 @@ export function DiscountedPriceHorizontal({
   
   // Step 5: Apply discount to the adjusted price
   // Pass selected currency symbol so formatting is correct
-  const discount = calculateDiscount(productType, adjustedNumericPrice, selectedCurrency.symbol, planType)
-  
-  const globalSettings = getGlobalDiscountSettings()
+  const discount = calculateDiscount(productType, adjustedNumericPrice, selectedCurrency.symbol, planType, liveDiscounts)
+
+  const globalSettings = getGlobalDiscountSettings(liveDiscounts)
   
   // Use adjusted price as the "original" price for discount display
   const originalPriceForDisplay = priceAdjustment.isAdjusted 
@@ -319,7 +322,8 @@ export function DiscountedPriceCompact({
   showDiscountType = false
 }: DiscountedPriceProps) {
   const { selectedCurrency, exchangeRates } = useCurrency()
-  
+  const { config: liveDiscounts } = useDiscounts()
+
   // Extract numeric price from input
   const extractNumeric = (val: string | number): number => {
     if (typeof val === 'number') return val
@@ -353,9 +357,9 @@ export function DiscountedPriceCompact({
   
   // Step 5: Apply discount to the adjusted price
   // Pass selected currency symbol so formatting is correct
-  const discount = calculateDiscount(productType, adjustedNumericPrice, selectedCurrency.symbol, planType)
-  
-  const globalSettings = getGlobalDiscountSettings()
+  const discount = calculateDiscount(productType, adjustedNumericPrice, selectedCurrency.symbol, planType, liveDiscounts)
+
+  const globalSettings = getGlobalDiscountSettings(liveDiscounts)
   
   // Use adjusted price as the "original" price for discount display
   const originalPriceForDisplay = priceAdjustment.isAdjusted 

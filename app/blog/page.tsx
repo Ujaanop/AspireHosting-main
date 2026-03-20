@@ -5,14 +5,8 @@ import { motion } from "framer-motion"
 import { Calendar, Clock } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import {
-  getAllCategories,
-  getPosts,
-  getFeaturedPosts,
-  getRecentPosts,
-  formatDate,
-} from "../lib/blogUtils"
-import type { BlogFilters } from "../types/blog"
+import { formatDate } from "../lib/blogUtils"
+import type { BlogFilters, BlogPost, BlogCategory } from "../types/blog"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import BlogCard from "../components/blog/BlogCard"
@@ -24,13 +18,18 @@ export default function BlogPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState<string>("")
+  const [allPosts, setAllPosts] = useState<BlogPost[]>([])
+  const [categories, setCategories] = useState<BlogCategory[]>([])
 
-  const categories = getAllCategories()
-  const featuredPost = getFeaturedPosts(1)[0] ?? null
-  const recentPosts = getRecentPosts(4)
-  const { posts, pagination } = getPosts(filters, currentPage)
-
-  const isFiltered = searchQuery.trim() !== "" || selectedCategory !== ""
+  useEffect(() => {
+    fetch('/api/admin/blog')
+      .then(r => r.json())
+      .then(data => {
+        setAllPosts((data.posts ?? []).filter((p: BlogPost) => p.published))
+        setCategories(data.categories ?? [])
+      })
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
     const newFilters: BlogFilters = {}
@@ -39,6 +38,23 @@ export default function BlogPage() {
     setFilters(newFilters)
     setCurrentPage(1)
   }, [searchQuery, selectedCategory])
+
+  // Filter & paginate client-side
+  const POSTS_PER_PAGE = 6
+  const filtered = allPosts.filter(p => {
+    if (filters.category && p.category !== filters.category) return false
+    if (filters.search) {
+      const q = filters.search.toLowerCase()
+      return p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q) || p.tags.some(t => t.toLowerCase().includes(q))
+    }
+    return true
+  })
+  const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE)
+  const posts = filtered.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE)
+  const pagination = { currentPage, totalPages, totalPosts: filtered.length, hasNextPage: currentPage < totalPages, hasPreviousPage: currentPage > 1 }
+  const featuredPost = allPosts.find(p => p.featured) ?? null
+  const recentPosts = allPosts.slice(0, 4)
+  const isFiltered = searchQuery.trim() !== "" || selectedCategory !== ""
 
   const getCategoryBg = (categoryId: string) => {
     const cat = categories.find((c) => c.id === categoryId)

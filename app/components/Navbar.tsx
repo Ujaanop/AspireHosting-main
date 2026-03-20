@@ -134,6 +134,7 @@ ThemeToggle.displayName = 'ThemeToggle'
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [banner, setBanner] = useState(config.banner);
   const [showBanner, setShowBanner] = useState(config.banner.show);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -148,6 +149,18 @@ const Navbar: React.FC = () => {
   const pathname = usePathname();
   const { theme } = useTheme();
   const { t } = useLanguage();
+
+  useEffect(() => {
+    fetch('/api/admin/discounts')
+      .then(r => r.json())
+      .then(data => {
+        if (data.banner) {
+          setBanner(data.banner);
+          setShowBanner(data.banner.show);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -192,7 +205,7 @@ const Navbar: React.FC = () => {
 
   const handleCopyCode = useCallback(() => {
     if (typeof window !== 'undefined' && navigator.clipboard) {
-      navigator.clipboard.writeText(config.banner.couponCode)
+      navigator.clipboard.writeText(banner.couponCode)
         .then(() => {
           setConfettiConfig({
             recycle: false,
@@ -207,7 +220,7 @@ const Navbar: React.FC = () => {
         });
     } else {
       const textArea = document.createElement('textarea');
-      textArea.value = config.banner.couponCode;
+      textArea.value = banner.couponCode;
       document.body.appendChild(textArea);
       textArea.select();
       try {
@@ -224,7 +237,7 @@ const Navbar: React.FC = () => {
       }
       document.body.removeChild(textArea);
     }
-  }, [config.banner.couponCode]);
+  }, [banner.couponCode]);
 
   const handleClosePopup = useCallback(() => {
     setConfettiConfig(prev => ({
@@ -802,14 +815,14 @@ const Navbar: React.FC = () => {
       </AnimatePresence>
 
       {/* Top Banner */}
-      {showBanner && config.banner.show && (
-        <div 
+      {showBanner && banner.show && (
+        <div
           className={`relative text-white text-sm py-3 px-4 transition-colors duration-300 ${
-            !config.banner.useThemeColor ? config.banner.backgroundColor : ''
+            !banner.useThemeColor ? banner.backgroundColor : ''
           }`}
           style={{
-            backgroundColor: config.banner.useThemeColor 
-              ? 'var(--button-primary)' 
+            backgroundColor: banner.useThemeColor
+              ? 'var(--button-primary)'
               : undefined
           }}
         >
@@ -819,12 +832,12 @@ const Navbar: React.FC = () => {
                 <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 icon-text-primary rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="icon-text-primary text-xs font-bold">%</span>
                 </div>
-                <span className="text-xs sm:text-sm md:text-base text-white font-medium">{config.banner.text}</span>
+                <span className="text-xs sm:text-sm md:text-base text-white font-medium">{banner.text}</span>
                 <button
                   onClick={handleCopyCode}
                   className="bg-white/20 hover:bg-white/30 px-1.5 sm:px-2 md:px-3 py-1 rounded text-xs font-bold transition-colors cursor-pointer whitespace-nowrap flex-shrink-0 text-white border border-white/30 hover:border-white/50"
                 >
-                  {config.banner.couponCode}
+                  {banner.couponCode}
                 </button>
               </div>
               <button

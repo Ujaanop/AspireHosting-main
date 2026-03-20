@@ -6,6 +6,7 @@ import { ThemeProvider } from "./components/theme-provider";
 import { LayoutWrapper } from "./components/layout-wrapper";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { CurrencyProvider } from "./contexts/CurrencyContext";
+import { DiscountsProvider } from "./contexts/DiscountsContext";
 import CookieConsent from "./components/CookieConsent";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import MaintenancePopup from "./components/MaintenancePopup";
@@ -249,6 +250,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <LanguageProvider>
             <CurrencyProvider>
+              <DiscountsProvider>
               <LayoutWrapper>
                 {children}
                 <Analytics />
@@ -256,6 +258,7 @@ export default function RootLayout({
               <CookieConsent />
               <ThemeSwitcher />
               <MaintenancePopup />
+              </DiscountsProvider>
             </CurrencyProvider>
           </LanguageProvider>
         </ThemeProvider>
