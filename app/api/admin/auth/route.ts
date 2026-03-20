@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { verifyAdmin } from '@/lib/verifyAdmin'
 
-// POST — verify credentials (read-only, works on Vercel)
 export async function POST(req: NextRequest) {
   try {
     const { username, password } = await req.json()
